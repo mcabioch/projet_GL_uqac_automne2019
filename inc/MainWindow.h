@@ -74,6 +74,8 @@ class MainWindow : public Window {
 
 			QTabWidget* _tab;
 
+			std::vector<QString> _weekdays;
+
 	#include "MainWindow_TabGeneral.h"
 	#include "MainWindow_TabTeam.h"
 	#include "MainWindow_TabPlanning.h"

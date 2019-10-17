@@ -6,9 +6,7 @@ MainWindow::MainWindow(QWidget* parent) :
 	center(nullptr),
 
 	_tab(nullptr),
-	_generalTab(nullptr),
-	_teamTab(nullptr),
-	_planningTab(nullptr)
+	_weekdays()
 {
 	/* Base */
 		center = new QWidget;
@@ -23,15 +21,19 @@ MainWindow::MainWindow(QWidget* parent) :
 		this->Fullscreen();
 	/********/
 
+	_weekdays.push_back("Monday");
+	_weekdays.push_back("Tuesday");
+	_weekdays.push_back("Wednesday");
+	_weekdays.push_back("Thursday");
+	_weekdays.push_back("Friday");
+	_weekdays.push_back("Saturday");
+	_weekdays.push_back("Sunday");
+
 	_tab = new QTabWidget();
 
 	initGeneralTab(_tab);
 	initTeamTab(_tab);
 	initPlanningTab(_tab);
-
-	_tab->addTab(_generalTab, "General");
-	_tab->addTab(_teamTab, "Team");
-	_tab->addTab(_planningTab, "Planning");
 
 	centerLayout->addWidget(_tab);
 }

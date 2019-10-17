@@ -59,7 +59,12 @@ private:
 	/* Global */
 		
 	/* Local */
-		QWidget* _generalTab;
-		QVBoxLayout* _generalLay;
+		QWidget* _g_tab;
+		QVBoxLayout* _g_lay;
+		//QVBoxLayout* _g_daysChoice;
+		//QHBoxLayout* _g_checkAllLay;
+		//QCheckBox* _g_allCheckbox;
+		//QHBoxLayout* _g_checkDays;
+		//std::map<QString, QCheckBox*> _g_daysCheckboxes;
 
 #endif //HEADER_MAINWINDOW_TAB_GENERAL
