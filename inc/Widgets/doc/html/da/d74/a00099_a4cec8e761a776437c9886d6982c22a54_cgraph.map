@@ -1,0 +1,13 @@
+<map id="Window::setMargin" name="Window::setMargin">
+<area shape="rect" id="node2" href="$da/d74/a00099.php#a673240610da13a2424d4a7591fb19026" title="Call to fullscreen or unfullscreen the window. " alt="" coords="229,5,363,32"/>
+<area shape="rect" id="node3" href="$da/d74/a00099.php#a97078387be519b16401c3bb0f299aa01" title="Call to minimize the window. " alt="" coords="231,56,361,83"/>
+<area shape="rect" id="node4" href="$da/d74/a00099.php#ad21ca1bd9a5c01411800f931bd7b1f7d" title="Call to close the window. " alt="" coords="247,107,345,133"/>
+<area shape="rect" id="node5" href="$da/d74/a00099.php#a677a2c1046a84743e709515f5618b1e8" title="The show event of the window. " alt="" coords="225,157,367,184"/>
+<area shape="rect" id="node6" href="$da/d74/a00099.php#a1b653d42eb4810a8c0be48dc65d98b3a" title="The paint event of the window. " alt="" coords="227,208,365,235"/>
+<area shape="rect" id="node7" href="$da/d74/a00099.php#a3d72edbec3fed3709ea3d374973c70b4" title="The resize event of the window. " alt="" coords="223,259,369,285"/>
+<area shape="rect" id="node8" href="$da/d74/a00099.php#a1ce5696d3fac4e90e6c9fbd0477d0f9d" title="Draw the background of the window. " alt="" coords="209,309,383,336"/>
+<area shape="rect" id="node9" href="$da/d74/a00099.php#acbed45e30a51c6855e5e6ea88197b161" title="Draw the default background of the window. " alt="" coords="188,360,404,387"/>
+<area shape="rect" id="node10" href="$da/d74/a00099.php#a3f710c0adafe15f27766f70a1c5b4dee" title="Set the background window. " alt="" coords="214,411,378,437"/>
+<area shape="rect" id="node11" href="$da/d74/a00099.php#a85b13ae29ce6f9aa9ffb7408b0ddd4b7" title="Set if yes or no the window can be resized. " alt="" coords="218,461,374,488"/>
+<area shape="rect" id="node12" href="$da/d74/a00099.php#a8ad2a767e19299b153f9bc0457f13114" title="Set the titlebar visibility. " alt="" coords="221,512,371,539"/>
+</map>
