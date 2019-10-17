@@ -2,6 +2,7 @@
 #define HEADER_MAINWINDOW
 
 #include "Widgets/Qt.hpp"
+#include "TeamMember.h"
 
 /*!
 * \class	MainWindow
