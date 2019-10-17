@@ -25,9 +25,9 @@ MainWindow::MainWindow(QWidget* parent) :
 
 	_tab = new QTabWidget();
 
-	_generalTab = new QWidget();
-	_teamTab = new QWidget();
-	_planningTab = new QWidget();
+	initGeneralTab(_tab);
+	initTeamTab(_tab);
+	initPlanningTab(_tab);
 
 	_tab->addTab(_generalTab, "General");
 	_tab->addTab(_teamTab, "Team");
@@ -37,9 +37,9 @@ MainWindow::MainWindow(QWidget* parent) :
 }
 
 MainWindow::~MainWindow(){
-	deletePtr(_planningTab);
-	deletePtr(_teamTab);
-	deletePtr(_generalTab);
+	deleteGeneralTab(_tab);
+	deleteTeamTab(_tab);
+	deletePlanningTab(_tab);
 
 	deletePtr(_tab);
 

@@ -10,25 +10,25 @@
 class MainWindow : public Window {
 	/* Usefull or required defines */
 		Q_OBJECT
-	/* Members of Template */
+	/* Members of MainWindow */
 	public:
-		/* Internal enums of Template */
+		/* Internal enums of MainWindow */
 			
-		/* Constructors & Destructor of Template */
+		/* Constructors & Destructor of MainWindow */
 			/*! \brief	The constructor of the class */
 			MainWindow(QWidget* parent = nullptr);
 			virtual ~MainWindow();
-		/* Getters of Template */
+		/* Getters of MainWindow */
 			
-		/* Setters of Template */
+		/* Setters of MainWindow */
 			
-		/* Statics of Template */
+		/* Statics of MainWindow */
 			
-		/* Operators of Template */
+		/* Operators of MainWindow */
 			
-		/* Friends of Template */
+		/* Friends of MainWindow */
 			
-		/* Others members of Template */
+		/* Others members of MainWindow */
 			
 
 	public slots:
@@ -38,21 +38,21 @@ class MainWindow : public Window {
 		
 
 	protected:
-		/* Getters of Template */
+		/* Getters of MainWindow */
 			
-		/* Setters of Template */
+		/* Setters of MainWindow */
 			
-		/* Statics of Template */
+		/* Statics of MainWindow */
 			
-		/* Friends of Template */
+		/* Friends of MainWindow */
 			
-		/* Others members of Template */
+		/* Others members of MainWindow */
 			
 
 	private:
 		
 
-	/* Atttributes of Template */
+	/* Atttributes of MainWindow */
 	public:
 		/* Global */
 			
@@ -73,9 +73,10 @@ class MainWindow : public Window {
 			QWidget* center;
 
 			QTabWidget* _tab;
-			QWidget* _generalTab;
-			QWidget* _teamTab;
-			QWidget* _planningTab;
+
+	#include "MainWindow_TabGeneral.h"
+	#include "MainWindow_TabTeam.h"
+	#include "MainWindow_TabPlanning.h"
 };
 
 #endif //HEADER_MAINWINDOW
