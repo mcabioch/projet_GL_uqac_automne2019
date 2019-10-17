@@ -1,7 +1,6 @@
 #ifndef HEADER_MAINWINDOW_TAB_GENERAL
 #define HEADER_MAINWINDOW_TAB_GENERAL
 
-
 /* Members of MainWindow */
 public:
 	/* Internal enums of MainWindow */
@@ -17,12 +16,12 @@ public:
 	/* Friends of MainWindow */
 		
 	/* Others members of MainWindow */
-		void initGeneralTab(QTabWidget* tabWidget);
-		void resetGeneralTab(QTabWidget* tabWidget);
-		void deleteGeneralTab(QTabWidget* tabWidget);
+		
 
 public slots:
 	void generalAllCheckstate(int state);
+	void generalSaveDatas();
+	void generalCalculate();
 
 signals:
 	
@@ -40,7 +39,9 @@ protected:
 		
 
 private:
-	
+	void initGeneralTab(QTabWidget* tabWidget);
+	void resetGeneralTab(QTabWidget* tabWidget);
+	void deleteGeneralTab(QTabWidget* tabWidget);
 
 /* Atttributes of MainWindow */
 public:
@@ -61,10 +62,27 @@ private:
 	/* Local */
 		QWidget* _g_tab;
 		QVBoxLayout* _g_lay;
+
 		QVBoxLayout* _g_daysChoice;
 		QHBoxLayout* _g_checkAllLay;
 		QCheckBox* _g_allCheckbox;
 		QHBoxLayout* _g_checkDays;
 		std::map<QString, QCheckBox*> _g_daysCheckboxes;
+
+		QHBoxLayout* _g_minTimeLay;
+		QTimeEdit* _g_minTimeEdit;
+		QLabel* _g_minTimeLabel;
+
+		QHBoxLayout* _g_maxTimeLay;
+		QTimeEdit* _g_maxTimeEdit;
+		QLabel* _g_maxTimeLabel;
+
+		QHBoxLayout* _g_defaultHoursLay;
+		QDoubleSpinBox* _g_defaultHoursEdit;
+		QLabel* _g_defaultHoursLabel;
+
+		QHBoxLayout* _g_buttons;
+		QPushButton* _g_saver;
+		QPushButton* _g_computer;
 
 #endif //HEADER_MAINWINDOW_TAB_GENERAL

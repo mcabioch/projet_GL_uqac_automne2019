@@ -35,12 +35,12 @@ protected:
 	/* Friends of MainWindow */
 		
 	/* Others members of MainWindow */
-		void initPlanningTab(QTabWidget* tabWidget);
-		void resetPlanningTab(QTabWidget* tabWidget);
-		void deletePlanningTab(QTabWidget* tabWidget);
+		
 
 private:
-	
+	void initPlanningTab(QTabWidget* tabWidget);
+	void resetPlanningTab(QTabWidget* tabWidget);
+	void deletePlanningTab(QTabWidget* tabWidget);
 
 /* Atttributes of MainWindow */
 public:

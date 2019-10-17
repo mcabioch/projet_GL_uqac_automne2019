@@ -7,7 +7,7 @@
 * \class	MainWindow
 * \brief	The main window of the software
 */
-class MainWindow : public Window {
+class MainWindow : public QMainWindow {
 	/* Usefull or required defines */
 		Q_OBJECT
 	/* Members of MainWindow */

@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 
 MainWindow::MainWindow(QWidget* parent) :
-	Window(parent),
+	QMainWindow(parent),
 	centerLayout(nullptr),
 	center(nullptr),
 
@@ -17,8 +17,7 @@ MainWindow::MainWindow(QWidget* parent) :
 
 		center->setLayout(centerLayout);
 
-		this->enableResize(true);
-		this->Fullscreen();
+		this->showMaximized();
 	/********/
 
 	_weekdays.push_back("Monday");

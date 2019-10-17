@@ -50,7 +50,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = src/main.cpp \
+SOURCES       = src/Globals.cpp \
+		src/main.cpp \
 		src/MainWindow.cpp \
 		src/MainWindow_TabGeneral.cpp \
 		src/MainWindow_TabPlanning.cpp \
@@ -81,7 +82,8 @@ SOURCES       = src/main.cpp \
 		moc_Window.cpp \
 		moc_WindowButton.cpp \
 		moc_WindowTitleBar.cpp
-OBJECTS       = main.o \
+OBJECTS       = Globals.o \
+		main.o \
 		MainWindow.o \
 		MainWindow_TabGeneral.o \
 		MainWindow_TabPlanning.o \
@@ -186,7 +188,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		planning_generator.pro inc/MainWindow.h \
+		planning_generator.pro inc/Globals.h \
+		inc/MainWindow.h \
 		inc/MainWindow_TabGeneral.h \
 		inc/MainWindow_TabPlanning.h \
 		inc/MainWindow_TabTeam.h \
@@ -204,7 +207,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		inc/Widgets/Widget.hpp \
 		inc/Widgets/Window.hpp \
 		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/WindowTitleBar.hpp src/main.cpp \
+		inc/Widgets/WindowTitleBar.hpp src/Globals.cpp \
+		src/main.cpp \
 		src/MainWindow.cpp \
 		src/MainWindow_TabGeneral.cpp \
 		src/MainWindow_TabPlanning.cpp \
@@ -407,8 +411,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/MainWindow.h inc/MainWindow_TabGeneral.h inc/MainWindow_TabPlanning.h inc/MainWindow_TabTeam.h inc/Widgets/DrawScene.hpp inc/Widgets/Font.hpp inc/Widgets/GraphScene.hpp inc/Widgets/Lines.hpp inc/Widgets/Qt.hpp inc/Widgets/QtDefines.hpp inc/Widgets/QtFunctions.hpp inc/Widgets/Scene.hpp inc/Widgets/Spacers.hpp inc/Widgets/String.hpp inc/Widgets/TableWidget.hpp inc/Widgets/Widget.hpp inc/Widgets/Window.hpp inc/Widgets/WindowButton.hpp inc/Widgets/WindowTitleBar.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/main.cpp src/MainWindow.cpp src/MainWindow_TabGeneral.cpp src/MainWindow_TabPlanning.cpp src/MainWindow_TabTeam.cpp inc/Widgets/DrawScene.cpp inc/Widgets/Font.cpp inc/Widgets/GraphScene.cpp inc/Widgets/Lines.cpp inc/Widgets/QtFunctions.cpp inc/Widgets/Scene.cpp inc/Widgets/String.cpp inc/Widgets/TableWidget.cpp inc/Widgets/Widget.cpp inc/Widgets/Window.cpp inc/Widgets/Window_Draw.cpp inc/Widgets/Window_Event.cpp inc/Widgets/WindowButton.cpp inc/Widgets/WindowTitleBar.cpp inc/Widgets/WindowTitleBar_Buttons.cpp inc/Widgets/WindowTitleBar_Draw.cpp inc/Widgets/WindowTitleBar_Event.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents inc/Globals.h inc/MainWindow.h inc/MainWindow_TabGeneral.h inc/MainWindow_TabPlanning.h inc/MainWindow_TabTeam.h inc/Widgets/DrawScene.hpp inc/Widgets/Font.hpp inc/Widgets/GraphScene.hpp inc/Widgets/Lines.hpp inc/Widgets/Qt.hpp inc/Widgets/QtDefines.hpp inc/Widgets/QtFunctions.hpp inc/Widgets/Scene.hpp inc/Widgets/Spacers.hpp inc/Widgets/String.hpp inc/Widgets/TableWidget.hpp inc/Widgets/Widget.hpp inc/Widgets/Window.hpp inc/Widgets/WindowButton.hpp inc/Widgets/WindowTitleBar.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/Globals.cpp src/main.cpp src/MainWindow.cpp src/MainWindow_TabGeneral.cpp src/MainWindow_TabPlanning.cpp src/MainWindow_TabTeam.cpp inc/Widgets/DrawScene.cpp inc/Widgets/Font.cpp inc/Widgets/GraphScene.cpp inc/Widgets/Lines.cpp inc/Widgets/QtFunctions.cpp inc/Widgets/Scene.cpp inc/Widgets/String.cpp inc/Widgets/TableWidget.cpp inc/Widgets/Widget.cpp inc/Widgets/Window.cpp inc/Widgets/Window_Draw.cpp inc/Widgets/Window_Event.cpp inc/Widgets/WindowButton.cpp inc/Widgets/WindowTitleBar.cpp inc/Widgets/WindowTitleBar_Buttons.cpp inc/Widgets/WindowTitleBar_Draw.cpp inc/Widgets/WindowTitleBar_Event.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -568,6 +572,9 @@ compiler_lex_clean:
 compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
+
+Globals.o: src/Globals.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Globals.o src/Globals.cpp
 
 main.o: src/main.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o src/main.cpp
