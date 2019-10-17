@@ -394,7 +394,7 @@ gdb: clean
 	gdb $(BINDIR)/$(FIN_EXE)
 
 valgrind: all
-	valgrind $(BINDIR)/$(FIN_EXE)
+	valgrind ./$(FIN_EXE)
 
 check:
 	make gdb

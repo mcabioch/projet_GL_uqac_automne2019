@@ -70,8 +70,12 @@ class MainWindow : public Window {
 			
 		/* Local */
 			QVBoxLayout* centerLayout;
-			QWidget* widget;
 			QWidget* center;
+
+			QTabWidget* _tab;
+			QWidget* _generalTab;
+			QWidget* _teamTab;
+			QWidget* _planningTab;
 };
 
 #endif //HEADER_MAINWINDOW
