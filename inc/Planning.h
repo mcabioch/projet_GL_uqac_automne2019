@@ -17,8 +17,15 @@ class Planning {
 
 		friend std::ostream& operator<<(std::ostream& os, const Planning& p);
 
+		std::string toCSV(const Globals& globals, const std::vector<TeamMember>& teamMembers, std::string separator = ",");
+
 	private:
+		std::vector<std::pair<std::string, size_t>> getBestSlots(const Globals& globals, const TeamMember& member, const std::map<std::string, std::vector<bool>>& memberPlanning, const std::map<std::string, std::vector<int>>& globalPlanning);
+
+	private:
+		float _freq;
 		std::map<int, std::map<std::string, std::vector<bool>>> _planning;
+		std::vector<std::string> _weekdays;
 };
 
 #endif //HEADER_PLANNING
