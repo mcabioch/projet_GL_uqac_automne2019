@@ -30,7 +30,18 @@ MainWindow::MainWindow(QWidget* parent) :
 
 	_tab = new QTabWidget();
 
-	initGeneralTab(_tab);
+	std::ifstream reader;
+	reader.open("res/test.profile");
+	if(reader){
+		Globals globals;
+		reader >> globals;
+		reader.close();
+
+		initGeneralTab(_tab, globals);
+	} else {
+		initGeneralTab(_tab);
+	}
+
 	initTeamTab(_tab);
 	initPlanningTab(_tab);
 

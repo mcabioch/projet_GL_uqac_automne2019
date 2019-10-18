@@ -1,7 +1,6 @@
 #ifndef HEADER_MAINWINDOW_TAB_PLANNING
 #define HEADER_MAINWINDOW_TAB_PLANNING
 
-
 /* Members of MainWindow */
 public:
 	/* Internal enums of MainWindow */
@@ -53,7 +52,8 @@ protected:
 	/* Global */
 		
 	/* Local */
-		
+		Globals _p_globals;
+		std::vector<TeamMember> _p_teamMembers;
 
 private:
 	/* Global */
@@ -61,5 +61,7 @@ private:
 	/* Local */
 		QWidget* _planningTab;
 		QVBoxLayout* _planningLay;
+
+		Planning _planning;
 
 #endif //HEADER_MAINWINDOW_TAB_PLANNING

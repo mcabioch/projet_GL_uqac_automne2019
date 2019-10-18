@@ -1,8 +1,8 @@
 #ifndef HEADER_MAINWINDOW
 #define HEADER_MAINWINDOW
 
-#include "TeamMember.h"
-#include "AddMemberModal.h"
+#include "PAL.h"
+#include "MCD.h"
 
 /*!
 * \class	MainWindow

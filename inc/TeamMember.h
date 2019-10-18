@@ -7,21 +7,24 @@
 
 class TeamMember {
     public:
-        TeamMember(int _id, double _nbHours, QString _firstName, QString _lastName, std::vector<QString> &_daysOff);
+        TeamMember(int _id, double _nbHours, QString _firstName, QString _lastName, const std::vector<QString> &_daysOff);
         ~TeamMember();
+
         friend std::ostream & operator<<(std::ostream &os, const TeamMember &tm);
+        friend std::ifstream & operator>>(std::ifstream &is, TeamMember &tm);
 
-        int getId();
-        double getNbHours();
-        QString getFirstName();
-        QString getLastName();
-        std::vector<QString> getDaysOff();
+        int getId()const { return id; }
+        double getNbHours()const { return nbHours; }
+        QString getFirstName()const { return firstName; }
+        QString getLastName()const { return lastName; }
+        std::vector<QString> getDaysOff()const { return daysOff; }
 
-        void setId(int _id);
-        void setNbHours(double _nbHours);
-        void setFirstName(QString _firstName);
-        void setLastName(QString _lastName);
-        void setDaysOff(std::vector<QString> &_daysOff);
+        void setId(int _id) { id = _id; }
+        void setNbHours(double _nbHours) { nbHours = _nbHours; }
+        void setFirstName(QString _firstName) { firstName = _firstName; }
+        void setLastName(QString _lastName) { lastName = _lastName; }
+        void setDaysOff(std::vector<QString> &_daysOff) { daysOff = _daysOff; }
+
 
     private:
         int id;

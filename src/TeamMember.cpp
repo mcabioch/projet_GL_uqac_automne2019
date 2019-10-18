@@ -1,6 +1,6 @@
 #include "TeamMember.h"
 
-TeamMember::TeamMember(int _id, double _nbHours, QString _firstName, QString _lastName, std::vector<QString> &_daysOff) {
+TeamMember::TeamMember(int _id, double _nbHours, QString _firstName, QString _lastName, const std::vector<QString> &_daysOff) {
     id = _id;
     nbHours = _nbHours;
     firstName = _firstName;
@@ -13,53 +13,27 @@ TeamMember::~TeamMember() {
 }
 
 std::ostream & operator<<(std::ostream &os, const TeamMember &tm) {
-    os << tm.id << " " << tm.nbHours << " " << tm.firstName.toStdString() << " " << tm.lastName.toStdString() << " " << tm.daysOff.size() << " ";
-    
-    for(auto &e : tm.daysOff) {
-        os << e.toStdString() << " ";
-    }
+    os << "Id : " << tm.id << "\nNb hours : " << tm.nbHours << "\n" << tm.firstName.toStdString() << " " << tm.lastName.toStdString() << "\nDays off ;";
 
-    os << "\n";
+    for(auto &e : tm.daysOff) {
+        os << "\n\t- " << e.toStdString();
+    }
 
     return os;
 }
 
-int TeamMember::getId() {
-    return id;
-}
+std::ifstream & operator>>(std::ifstream &is, TeamMember &tm) {
+    size_t size;
+    std::string first, last;
+    is >> tm.id >> tm.nbHours >> first >> last >> size;
+    tm.firstName = first.c_str();
+    tm.lastName = last.c_str();
 
-void TeamMember::setId(int _id) {
-    id = _id;
-}
+    for(size_t i = 0; i < size; ++i) {
+        std::string str;
+        is >> str;
+        tm.daysOff.push_back(QString(str.c_str()));
+    }
 
-double TeamMember::getNbHours() {
-    return nbHours;
-}
-
-void TeamMember::setNbHours(double _nbHours) {
-    nbHours = _nbHours;
-}
-
-QString TeamMember::getFirstName() {
-    return firstName;
-}
-
-void TeamMember::setFirstName(QString _firstName) {
-    firstName = _firstName;
-}
-
-QString TeamMember::getLastName() {
-    return lastName;
-}
-
-void TeamMember::setLastName(QString _lastName) {
-    lastName = _lastName;
-}
-
-std::vector<QString> TeamMember::getDaysOff() {
-    return daysOff;
-}
-
-void TeamMember::setDaysOff(std::vector<QString> &_daysOff) {
-    daysOff = _daysOff;
+    return is;
 }

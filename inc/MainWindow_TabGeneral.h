@@ -40,8 +40,12 @@ protected:
 
 private:
 	void initGeneralTab(QTabWidget* tabWidget);
+	void initGeneralTab(QTabWidget* tabWidget, Globals initGlob);
 	void resetGeneralTab(QTabWidget* tabWidget);
 	void deleteGeneralTab(QTabWidget* tabWidget);
+
+	Globals translate();
+	QTime getQTimeFromFloat(float time);
 
 /* Atttributes of MainWindow */
 public:
@@ -81,8 +85,6 @@ private:
 		QDoubleSpinBox* _g_defaultHoursEdit;
 		QLabel* _g_defaultHoursLabel;
 
-		QHBoxLayout* _g_buttons;
-		QPushButton* _g_saver;
-		QPushButton* _g_computer;
+		QToolBar* _g_toolBar;
 
 #endif //HEADER_MAINWINDOW_TAB_GENERAL
