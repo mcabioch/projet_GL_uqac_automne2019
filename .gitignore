@@ -1,8 +1,10 @@
 *.o
 */*.o
 *.pro
-Makefile
 moc_*
+
+Makefile
 
 planning_generator
 projet_GL_uqac_automne2019
+
