@@ -40,10 +40,12 @@ protected:
 
 private:
 	void initGeneralTab(QTabWidget* tabWidget);
+	void initGeneralTab(QTabWidget* tabWidget, Globals initGlob);
 	void resetGeneralTab(QTabWidget* tabWidget);
 	void deleteGeneralTab(QTabWidget* tabWidget);
 
 	Globals translate();
+	QTime getQTimeFromFloat(float time);
 
 /* Atttributes of MainWindow */
 public:

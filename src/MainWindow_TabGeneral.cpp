@@ -68,11 +68,27 @@ void MainWindow::initGeneralTab(QTabWidget* tabWidget){
 /*******/
 
 	_g_defaultHoursEdit->setMinimum(0);
-	_g_defaultHoursEdit->setMaximum(90);
 
 	connect(_g_allCheckbox, SIGNAL(stateChanged(int)), this, SLOT(generalAllCheckstate(int)));
 	connect(_g_saver, SIGNAL(released()), this, SLOT(generalSaveDatas()));
 	connect(_g_computer, SIGNAL(released()), this, SLOT(generalCalculate()));
+}
+
+void MainWindow::initGeneralTab(QTabWidget* tabWidget, Globals initGlob){
+	initGeneralTab(tabWidget);
+
+/* Init values with initGlob */
+	_g_minTimeEdit->setTime(getQTimeFromFloat(initGlob.startMin));
+	_g_maxTimeEdit->setTime(getQTimeFromFloat(initGlob.endMax));
+	_g_defaultHoursEdit->setValue(initGlob.nbHours);
+
+	for(auto& day : initGlob.workedDays){
+		_g_daysCheckboxes[day.c_str()]->setCheckState(Qt::Checked);
+	}
+	if(initGlob.workedDays.size() == 7){
+		_g_allCheckbox->setCheckState(Qt::Checked);
+	}
+/*****************************/
 }
 
 void MainWindow::deleteGeneralTab(QTabWidget* tabWidget){
@@ -127,6 +143,12 @@ void MainWindow::generalAllCheckstate(int state){
 void MainWindow::generalSaveDatas(){
 	auto globals = translate();
 
+	std::ofstream writer;
+
+	writer.open("res/test.profile");
+	writer << globals << std::endl;
+	writer.close();
+
 	std::cout << globals << std::endl;
 }
 
@@ -145,13 +167,21 @@ Globals MainWindow::translate(){
 	out.startMin = static_cast<float>(min.hour()) + static_cast<float>(min.minute()) / 60.0 + static_cast<float>(min.second()) / 3600.0;
 	out.endMax = static_cast<float>(max.hour()) + static_cast<float>(max.minute()) / 60.0 + static_cast<float>(max.second()) / 3600.0;
 	out.nbHours = _g_defaultHoursEdit->value();
-	for(auto& checkbox : _g_daysCheckboxes){
-		if(checkbox.second->checkState() != Qt::Unchecked){
-			out.workedDays.push_back(checkbox.first.toStdString());
+	for(auto& weekday : _weekdays){
+		if(_g_daysCheckboxes[weekday]->checkState() != Qt::Unchecked){
+			out.workedDays.push_back(weekday.toStdString());
 		}
 	}
 
 	return out;
+}
+
+QTime MainWindow::getQTimeFromFloat(float time){
+	int h = static_cast<int>(time);
+	int m = static_cast<int>((time - h) * 60);
+	int s = static_cast<int>((time - h - m/60.0) * 3600);
+
+	return QTime(h, m, s);
 }
 
 void MainWindow::resetGeneralTab(QTabWidget* tabWidget){

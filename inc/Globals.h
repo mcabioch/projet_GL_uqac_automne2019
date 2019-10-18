@@ -2,6 +2,7 @@
 #define HEADER_GLOBALS
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 
 struct Globals {
@@ -12,6 +13,8 @@ struct Globals {
 };
 
 std::ostream& operator<<(std::ostream& os, const Globals& g);
-std::istream& operator>>(std::istream& is, Globals& g);
+
+std::ofstream& operator<<(std::ofstream& os, const Globals& g);
+std::ifstream& operator>>(std::ifstream& is, Globals& g);
 
 #endif //HEADER_GLOBALS
