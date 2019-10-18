@@ -15,12 +15,14 @@ void MainWindow::initPlanningTab(QTabWidget* tabWidget){
 	id++;
 	_p_teamMembers.push_back(TeamMember(id, 0, QString('a'+id), QString('A'+id), {"Saturday"}));
 
-	std::cout << _p_globals << "\n" << _p_teamMembers.size() << "\n";
+	std::cout << "----------- Planning test -----------\n";
+	std::cout << "### Dataset\n" << _p_globals << "\n" << _p_teamMembers.size() << "\n";
 	for(auto& teamMember : _p_teamMembers){
 		std::cout << teamMember << std::endl;
 	}
 
-	_planning.calculate(_p_globals, _p_teamMembers, _weekdays);
+	_planning.calculate(_p_globals, _p_teamMembers, _weekdays, {{12, 13.25}});
+	std::cout << "-------------------------------------\n";
 }
 
 void MainWindow::deletePlanningTab(QTabWidget*/* tabWidget*/){

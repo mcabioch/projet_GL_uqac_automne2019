@@ -5,7 +5,11 @@ Planning::Planning() :
 	_planning()
 {}
 
-std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(const Globals& globals, const std::vector<TeamMember>& teamMembers, const std::vector<QString>& weekdays){
+std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(const Globals& globals,
+																			const std::vector<TeamMember>& teamMembers,
+																			const std::vector<QString>& weekdays,
+																			const std::vector<Pause>& pauses
+																		   ){
 	for(const auto& day : weekdays){
 		_weekdays.push_back(day.toStdString());
 	}
@@ -28,9 +32,11 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 		_planning[member.getId()] = baseWeek;
 	}
 
+	std::cout << "### Arrays Sizes\n";
 	std::cout << *this << std::endl;
+
 	for(auto& member : teamMembers){
-		auto memberSlots = getBestSlots(globals, member, _planning[member.getId()], globalPlanning);
+		auto memberSlots = getBestSlots(globals, member, _planning[member.getId()], globalPlanning, pauses);
 
 		if(!memberSlots.size()){
 			continue;
@@ -40,6 +46,7 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 		_planning[member.getId()][bestSlot.first][bestSlot.second] = true;
 	}
 
+	std::cout << "### CSV\n";
 	std::ofstream writer("res/planning.csv");
 	writer << toCSV(globals, teamMembers, ";") << std::endl;
 	writer.close();
@@ -47,36 +54,56 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 	return _planning;
 }
 
-std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals& globals, const TeamMember& member, const std::map<std::string, std::vector<bool>>& memberPlanning, const std::map<std::string, std::vector<int>>&/* globalPlanning*/) {
+std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals& globals,
+																   const TeamMember& member,
+																   const std::map<std::string, std::vector<bool>>& memberPlanning,
+																   const std::map<std::string, std::vector<int>>&/* globalPlanning*/,
+																   const std::vector<Pause>& pauses
+																  ) {
 	std::vector<std::pair<std::string, size_t>> out;
 
-	/*auto available = out;
+	auto _pauses = pauses;
+	_pauses.push_back({0, globals.startMin});
+	_pauses.push_back({globals.endMax, 24});
+
+	auto available = out;
 	for(auto& day : _weekdays){
 		auto g_worked_b = globals.workedDays.begin();
 		auto g_worked_e = globals.workedDays.end();
 
-		auto t_off_b = member.getDaysOff().begin();
-		auto t_off_e = member.getDaysOff().end();
+		auto daysOff = member.getDaysOff();
+		auto t_off_b = daysOff.begin();
+		auto t_off_e = daysOff.end();
 
 		if(std::find(g_worked_b, g_worked_e, day) == g_worked_e){
 			continue;
 		}
-		if(std::find(t_off_b, t_off_e, day.c_str()) != t_off_e){
+		if(std::find(t_off_b, t_off_e, QString(day.c_str())) != t_off_e){
 			continue;
 		}
 
-		std::cout << day << std::endl;
 		auto& possibleSlots = memberPlanning.at(day);
 		for(size_t i = 0; i < possibleSlots.size(); ++i){
 			float actHour = static_cast<float>(i) / _freq;
 
-			if(actHour >= globals.startMin && actHour <= globals.endMax){
+			if(!isPause(actHour, _pauses)){
 				available.push_back(std::make_pair(day, i));
 			}
 		}
-	}*/
+	}
 
-	
+	std::cout << "### Availability" << std::endl;
+	std::cout << member.getFirstName().toStdString() << " " << member.getLastName().toStdString() << std::endl;
+	std::string precDay = "";
+	for(auto& data : available){
+		if(precDay != data.first){
+			precDay = data.first;
+			std::cout << std::endl;
+			std::cout << precDay << std::endl;
+		}
+		std::cout << static_cast<float>(data.second) / _freq << " ";
+	}
+	std::cout << std::endl;
 
 	return out;
 }
@@ -104,6 +131,16 @@ std::string Planning::toCSV(const Globals&/* globals*/, const std::vector<TeamMe
 	}
 
 	return csv;
+}
+
+bool Planning::isPause(float slot, const std::vector<Pause>& pauses){
+	for(auto& pause : pauses){
+		if(slot >= pause.start && slot < pause.end){
+			return true;
+		}
+	}
+
+	return false;
 }
 
 std::ostream& operator<<(std::ostream& os, const Planning& p){
