@@ -159,15 +159,17 @@ void MainWindow::generalSaveDatas(){
 
 	writer.open("res/test.profile");
 	writer << globals << std::endl;
+	writer << teamMembers.size() << std::endl;
+	for(auto& member : teamMembers){
+		writer << member << std::endl;
+	}
 	writer.close();
-
-	std::cout << globals << std::endl;
 }
 
 void MainWindow::generalCalculate(){
 	auto globals = translate();
 
-	
+	_planning.calculate(globals, teamMembers, _weekdays);
 }
 
 Globals MainWindow::translate(){

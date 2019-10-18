@@ -57,6 +57,7 @@ SOURCES       = src/AddMemberModal.cpp \
 		src/MainWindow_TabGeneral.cpp \
 		src/MainWindow_TabPlanning.cpp \
 		src/MainWindow_TabTeam.cpp \
+		src/Planning.cpp \
 		src/TeamMember.cpp \
 		inc/Widgets/DrawScene.cpp \
 		inc/Widgets/Font.cpp \
@@ -92,6 +93,7 @@ OBJECTS       = AddMemberModal.o \
 		MainWindow_TabGeneral.o \
 		MainWindow_TabPlanning.o \
 		MainWindow_TabTeam.o \
+		Planning.o \
 		TeamMember.o \
 		DrawScene.o \
 		Font.o \
@@ -202,6 +204,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		inc/MainWindow_TabTeam.h \
 		inc/MCD.h \
 		inc/PAL.h \
+		inc/Planning.h \
 		inc/TeamMember.h \
 		inc/Widgets/DrawScene.hpp \
 		inc/Widgets/Font.hpp \
@@ -224,6 +227,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/MainWindow_TabGeneral.cpp \
 		src/MainWindow_TabPlanning.cpp \
 		src/MainWindow_TabTeam.cpp \
+		src/Planning.cpp \
 		src/TeamMember.cpp \
 		inc/Widgets/DrawScene.cpp \
 		inc/Widgets/Font.cpp \
@@ -423,8 +427,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/AddMemberModal.h inc/Globals.h inc/MainWindow.h inc/MainWindow_TabGeneral.h inc/MainWindow_TabPlanning.h inc/MainWindow_TabTeam.h inc/MCD.h inc/PAL.h inc/TeamMember.h inc/Widgets/DrawScene.hpp inc/Widgets/Font.hpp inc/Widgets/GraphScene.hpp inc/Widgets/Lines.hpp inc/Widgets/Qt.hpp inc/Widgets/QtDefines.hpp inc/Widgets/QtFunctions.hpp inc/Widgets/Scene.hpp inc/Widgets/Spacers.hpp inc/Widgets/String.hpp inc/Widgets/TableWidget.hpp inc/Widgets/Widget.hpp inc/Widgets/Window.hpp inc/Widgets/WindowButton.hpp inc/Widgets/WindowTitleBar.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/AddMemberModal.cpp src/Globals.cpp src/main.cpp src/MainWindow.cpp src/MainWindow_TabGeneral.cpp src/MainWindow_TabPlanning.cpp src/MainWindow_TabTeam.cpp src/TeamMember.cpp inc/Widgets/DrawScene.cpp inc/Widgets/Font.cpp inc/Widgets/GraphScene.cpp inc/Widgets/Lines.cpp inc/Widgets/QtFunctions.cpp inc/Widgets/Scene.cpp inc/Widgets/String.cpp inc/Widgets/TableWidget.cpp inc/Widgets/Widget.cpp inc/Widgets/Window.cpp inc/Widgets/Window_Draw.cpp inc/Widgets/Window_Event.cpp inc/Widgets/WindowButton.cpp inc/Widgets/WindowTitleBar.cpp inc/Widgets/WindowTitleBar_Buttons.cpp inc/Widgets/WindowTitleBar_Draw.cpp inc/Widgets/WindowTitleBar_Event.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents inc/AddMemberModal.h inc/Globals.h inc/MainWindow.h inc/MainWindow_TabGeneral.h inc/MainWindow_TabPlanning.h inc/MainWindow_TabTeam.h inc/MCD.h inc/PAL.h inc/Planning.h inc/TeamMember.h inc/Widgets/DrawScene.hpp inc/Widgets/Font.hpp inc/Widgets/GraphScene.hpp inc/Widgets/Lines.hpp inc/Widgets/Qt.hpp inc/Widgets/QtDefines.hpp inc/Widgets/QtFunctions.hpp inc/Widgets/Scene.hpp inc/Widgets/Spacers.hpp inc/Widgets/String.hpp inc/Widgets/TableWidget.hpp inc/Widgets/Widget.hpp inc/Widgets/Window.hpp inc/Widgets/WindowButton.hpp inc/Widgets/WindowTitleBar.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/AddMemberModal.cpp src/Globals.cpp src/main.cpp src/MainWindow.cpp src/MainWindow_TabGeneral.cpp src/MainWindow_TabPlanning.cpp src/MainWindow_TabTeam.cpp src/Planning.cpp src/TeamMember.cpp inc/Widgets/DrawScene.cpp inc/Widgets/Font.cpp inc/Widgets/GraphScene.cpp inc/Widgets/Lines.cpp inc/Widgets/QtFunctions.cpp inc/Widgets/Scene.cpp inc/Widgets/String.cpp inc/Widgets/TableWidget.cpp inc/Widgets/Widget.cpp inc/Widgets/Window.cpp inc/Widgets/Window_Draw.cpp inc/Widgets/Window_Event.cpp inc/Widgets/WindowButton.cpp inc/Widgets/WindowTitleBar.cpp inc/Widgets/WindowTitleBar_Buttons.cpp inc/Widgets/WindowTitleBar_Draw.cpp inc/Widgets/WindowTitleBar_Event.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -500,6 +504,7 @@ moc_MainWindow.cpp: inc/PAL.h \
 		inc/AddMemberModal.h \
 		inc/MCD.h \
 		inc/Globals.h \
+		inc/Planning.h \
 		inc/MainWindow_TabGeneral.h \
 		inc/MainWindow_TabTeam.h \
 		inc/MainWindow_TabPlanning.h \
@@ -631,6 +636,9 @@ MainWindow_TabPlanning.o: src/MainWindow_TabPlanning.cpp
 
 MainWindow_TabTeam.o: src/MainWindow_TabTeam.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow_TabTeam.o src/MainWindow_TabTeam.cpp
+
+Planning.o: src/Planning.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Planning.o src/Planning.cpp
 
 TeamMember.o: src/TeamMember.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TeamMember.o src/TeamMember.cpp
