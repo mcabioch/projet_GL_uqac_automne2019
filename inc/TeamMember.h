@@ -12,6 +12,7 @@ class TeamMember {
 
         friend std::ostream & operator<<(std::ostream &os, const TeamMember &tm);
         friend std::ifstream & operator>>(std::ifstream &is, TeamMember &tm);
+        friend std::ofstream & operator<<(std::ofstream &os, const TeamMember &tm);
 
         int getId()const { return id; }
         double getNbHours()const { return nbHours; }
