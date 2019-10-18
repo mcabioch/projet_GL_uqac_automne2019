@@ -13,10 +13,20 @@ TeamMember::~TeamMember() {
 }
 
 std::ostream & operator<<(std::ostream &os, const TeamMember &tm) {
-    os << "Id : " << tm.id << "\nNb hours : " << tm.nbHours << "\n" << tm.firstName.toStdString() << " " << tm.lastName.toStdString() << "\nDays off :";
+    os << "Id : " << tm.id << "\nNb hours : " << tm.nbHours << "\n" << tm.firstName.toStdString() << " " << tm.lastName.toStdString() << "\nDays off ;";
 
     for(auto &e : tm.daysOff) {
         os << "\n\t- " << e.toStdString();
+    }
+
+    return os;
+}
+
+std::ofstream & operator<<(std::ofstream &os, const TeamMember &tm) {
+    os << tm.id << " " << tm.nbHours << " " << tm.firstName.toStdString() << " " << tm.lastName.toStdString() << " " << tm.daysOff.size();
+
+    for(auto &e : tm.daysOff) {
+        os << " " << e.toStdString();
     }
 
     return os;
