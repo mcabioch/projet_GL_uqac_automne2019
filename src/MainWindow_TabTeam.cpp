@@ -2,10 +2,14 @@
 
 void MainWindow::initTeamTab(QTabWidget* tabWidget){
 	_teamTab = new QMainWindow();
+	_teamCenter = new QWidget;
 	_teamToolBar = new QToolBar();
+	_teamTable = new QTableWidget();
+	_teamLay = new QVBoxLayout();
 	
 	tabWidget->addTab(_teamTab, "Team");
 	_teamTab->addToolBar(_teamToolBar);
+	_teamTab->setCentralWidget(_teamCenter);
 
 	const QIcon addIcon = QIcon("./res/icons/add-icon.png");
 	QAction *addAct = new QAction(addIcon, tr("&Add Member"), _teamTab);
@@ -16,14 +20,21 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 	const QIcon editIcon = QIcon("./res/icons/edit-icon.png");
 	QAction *editAct = new QAction(editIcon, tr("&Edit Member"), _teamTab);
 	editAct->setStatusTip(tr("Edit a team member"));
-	connect(editAct, SIGNAL(triggered()), this, SLOT(editMember(int 1)));
+	connect(editAct, SIGNAL(triggered()), this, SLOT(editMember()));
 	_teamToolBar->addAction(editAct);
 	
 	const QIcon deleteIcon = QIcon("./res/icons/delete-icon.png");
 	QAction *deleteAct = new QAction(deleteIcon, tr("&Delete Member"), _teamTab);
 	deleteAct->setStatusTip(tr("Delete a team member"));
-	connect(deleteAct, SIGNAL(triggered()), this, SLOT(deleteMember(int 1)));
+	connect(deleteAct, SIGNAL(triggered()), this, SLOT(deleteMember()));
 	_teamToolBar->addAction(deleteAct);
+
+	_teamTable->setColumnCount(5);
+	QStringList headers = { "Id", "First name", "Last name", "Nb of hours", "Days off"};
+	_teamTable->setHorizontalHeaderLabels(headers);
+
+	_teamCenter->setLayout(_teamLay);
+	_teamLay->addWidget(_teamTable);
 }
 
 void MainWindow::addMember() {
@@ -33,11 +44,13 @@ void MainWindow::addMember() {
 	newMember.exec();
 }
 
-void MainWindow::editMember(int memberId) {
-	std::cout << "test1" << std::endl;
+void MainWindow::editMember() {
+	for(auto &e : teamMembers) {
+		std::cout << e << std::endl;
+	}
 }
 
-void MainWindow::deleteMember(int memberId) {
+void MainWindow::deleteMember() {
 	std::cout << "test2" << std::endl;
 }
 

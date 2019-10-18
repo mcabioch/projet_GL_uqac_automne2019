@@ -20,8 +20,8 @@ public:
 
 public slots:
 	void addMember();
-	void editMember(int memberId);
-	void deleteMember(int memberId);
+	void editMember();
+	void deleteMember();
 
 signals:
 	
@@ -60,8 +60,11 @@ private:
 		
 	/* Local */
 		QMainWindow* _teamTab;
+		QWidget* _teamCenter;
 		QVBoxLayout* _teamLay;
 		QToolBar* _teamToolBar;
+		QTableWidget *_teamTable;
+
 		std::vector<TeamMember> teamMembers;
 		std::vector<TeamMember> selectedTeamMembers;
 

@@ -9,6 +9,7 @@ class TeamMember {
     public:
         TeamMember(int _id, double _nbHours, QString _firstName, QString _lastName, std::vector<QString> &_daysOff);
         ~TeamMember();
+        friend std::ostream & operator<<(std::ostream &os, const TeamMember &tm);
 
     private:
         int id;

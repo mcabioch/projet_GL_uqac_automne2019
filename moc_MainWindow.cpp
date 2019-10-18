@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[10];
-    char stringdata0[116];
+    QByteArrayData data[9];
+    char stringdata0[107];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,14 +39,12 @@ QT_MOC_LITERAL(4, 39, 16), // "generalSaveDatas"
 QT_MOC_LITERAL(5, 56, 16), // "generalCalculate"
 QT_MOC_LITERAL(6, 73, 9), // "addMember"
 QT_MOC_LITERAL(7, 83, 10), // "editMember"
-QT_MOC_LITERAL(8, 94, 8), // "memberId"
-QT_MOC_LITERAL(9, 103, 12) // "deleteMember"
+QT_MOC_LITERAL(8, 94, 12) // "deleteMember"
 
     },
     "MainWindow\0generalAllCheckstate\0\0state\0"
     "generalSaveDatas\0generalCalculate\0"
-    "addMember\0editMember\0memberId\0"
-    "deleteMember"
+    "addMember\0editMember\0deleteMember"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,16 +66,16 @@ static const uint qt_meta_data_MainWindow[] = {
        4,    0,   47,    2, 0x0a /* Public */,
        5,    0,   48,    2, 0x0a /* Public */,
        6,    0,   49,    2, 0x0a /* Public */,
-       7,    1,   50,    2, 0x0a /* Public */,
-       9,    1,   53,    2, 0x0a /* Public */,
+       7,    0,   50,    2, 0x0a /* Public */,
+       8,    0,   51,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    8,
-    QMetaType::Void, QMetaType::Int,    8,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -92,8 +90,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 1: _t->generalSaveDatas(); break;
         case 2: _t->generalCalculate(); break;
         case 3: _t->addMember(); break;
-        case 4: _t->editMember((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->deleteMember((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 4: _t->editMember(); break;
+        case 5: _t->deleteMember(); break;
         default: ;
         }
     }

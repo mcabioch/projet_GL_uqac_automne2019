@@ -27,7 +27,7 @@ class AddMemberModal : public QDialog {
 
 
         std::vector<QString> daysOff, weekdays;
-        std::vector<TeamMember> teamMembers;
+        std::vector<TeamMember> &teamMembers;
 		std::map<QString, QCheckBox*> _t_daysCheckboxes;
         int workTime;
 

@@ -1,11 +1,10 @@
 #include "AddMemberModal.h"
 
 AddMemberModal::AddMemberModal(QWidget *parent, const std::vector<QString> &_weekdays, std::vector<TeamMember> &_teamMembers) :
-    QDialog(parent)
-    
+    QDialog(parent),
+    teamMembers(_teamMembers)
 {
     weekdays = _weekdays;
-    teamMembers = _teamMembers;
     this->setWindowTitle("New team member");
     initWindow();
 }
@@ -85,6 +84,11 @@ void AddMemberModal::generalAllCheckstate(int state) {
 }
 
 void AddMemberModal::addNewMember() {
+    for(auto& checkbox : _t_daysCheckboxes){
+		if(checkbox.second->checkState() != Qt::Unchecked) {
+            daysOff.push_back(checkbox.first);
+        }
+	}
     
     teamMembers.push_back(TeamMember(static_cast<int>(teamMembers.size())+1, hoursPerWeek->value(), firstName->text(), lastName->text(), daysOff));
     this->close();
