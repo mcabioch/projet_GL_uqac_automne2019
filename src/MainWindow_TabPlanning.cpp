@@ -5,7 +5,7 @@ void MainWindow::initPlanningTab(QTabWidget* tabWidget){
 
 	tabWidget->addTab(_planningTab, "Planning");
 
-	_p_globals = {6, 16.5, 6, {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}};
+	_p_globals = {6, 16.75, 6, {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}};
 
 	int id = 0;
 	_p_teamMembers.push_back(TeamMember(++id, 0, QString('a'+id), QString('A'+id), {"Monday"}));
