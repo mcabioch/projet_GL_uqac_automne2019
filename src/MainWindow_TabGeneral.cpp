@@ -22,16 +22,10 @@ void MainWindow::initGeneralTab(QTabWidget* tabWidget){
 	_g_defaultHoursEdit = new QDoubleSpinBox();
 	_g_defaultHoursLabel = new QLabel("Default hours per week : ");
 
-	_g_buttons = new QHBoxLayout();
-	_g_saver = new QPushButton("Save datas");
-	_g_computer = new QPushButton("Create planning");
+	_g_toolBar = new QToolBar();
 /*******/
 
 /* Add */
-	_g_buttons->addWidget(_g_saver);
-	_g_buttons->addWidget(_g_computer);
-	_g_buttons->addItem(new QHSpacerItem());
-
 	_g_minTimeLay->addWidget(_g_minTimeLabel);
 	_g_minTimeLay->addWidget(_g_minTimeEdit);
 	_g_minTimeLay->addItem(new QHSpacerItem());
@@ -59,19 +53,37 @@ void MainWindow::initGeneralTab(QTabWidget* tabWidget){
 	_g_lay->addLayout(_g_defaultHoursLay);
 	_g_lay->addLayout(_g_minTimeLay);
 	_g_lay->addLayout(_g_maxTimeLay);
-	_g_lay->addLayout(_g_buttons);
 
 	_g_lay->addItem(new QVSpacerItem());
 	_g_tab->setLayout(_g_lay);
 
 	tabWidget->addTab(_g_tab, "General");
+
+	this->addToolBar(_g_toolBar);
 /*******/
+
+/* Toolbar */
+	const QIcon saveIcon = QIcon("./res/icons/save-icon.png");
+	QAction* saveAct = new QAction(saveIcon, tr("&Save"), this);
+	saveAct->setStatusTip(tr("Save General and Team"));
+
+	const QIcon generateIcon = QIcon("./res/icons/gen-icon.png");
+	QAction* genAct = new QAction(generateIcon, tr("&Generate the planning"), this);
+	genAct->setStatusTip(tr("Generate the planning"));
+
+	_g_toolBar->addAction(saveAct);
+	_g_toolBar->addAction(genAct);
+
+	_g_toolBar->setMovable(false);
+	_g_toolBar->setFloatable(false);
+/***********/
 
 	_g_defaultHoursEdit->setMinimum(0);
 
 	connect(_g_allCheckbox, SIGNAL(stateChanged(int)), this, SLOT(generalAllCheckstate(int)));
-	connect(_g_saver, SIGNAL(released()), this, SLOT(generalSaveDatas()));
-	connect(_g_computer, SIGNAL(released()), this, SLOT(generalCalculate()));
+
+	connect(saveAct, SIGNAL(triggered()), this, SLOT(generalSaveDatas()));
+	connect(genAct, SIGNAL(triggered()), this, SLOT(generalCalculate()));
 }
 
 void MainWindow::initGeneralTab(QTabWidget* tabWidget, Globals initGlob){
@@ -92,9 +104,7 @@ void MainWindow::initGeneralTab(QTabWidget* tabWidget, Globals initGlob){
 }
 
 void MainWindow::deleteGeneralTab(QTabWidget* tabWidget){
-	deletePtr(_g_buttons);
-	deletePtr(_g_saver);
-	deletePtr(_g_computer);
+	deletePtr(_g_toolBar);
 
 	deletePtr(_g_minTimeEdit);
 	deletePtr(_g_minTimeLabel);
@@ -122,6 +132,8 @@ void MainWindow::deleteGeneralTab(QTabWidget* tabWidget){
 
 	deletePtr(_g_lay);
 	deletePtr(_g_tab);
+
+	deletePtr(_g_toolBar);
 }
 
 void MainWindow::generalAllCheckstate(int state){

@@ -1,4 +1,4 @@
-6 16.9664 6
+5.25 16.9664 6
 Monday
 Tuesday
 Wednesday

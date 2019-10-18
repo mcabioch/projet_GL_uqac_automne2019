@@ -85,8 +85,6 @@ private:
 		QDoubleSpinBox* _g_defaultHoursEdit;
 		QLabel* _g_defaultHoursLabel;
 
-		QHBoxLayout* _g_buttons;
-		QPushButton* _g_saver;
-		QPushButton* _g_computer;
+		QToolBar* _g_toolBar;
 
 #endif //HEADER_MAINWINDOW_TAB_GENERAL
