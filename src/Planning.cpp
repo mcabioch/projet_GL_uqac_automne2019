@@ -5,24 +5,7 @@ Planning::Planning() :
 {}
 
 std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(const Globals& globals, const std::vector<TeamMember>& teamMembers, const std::vector<QString>& weekdays){
-	std::vector<bool> baseDay;
-	for(size_t i = 0; i < 24*15; ++i){
-		baseDay.push_back(false);
-	}
-
-	std::map<std::string, std::vector<bool>> baseWeek;
-	for(const auto& day : weekdays){
-		baseWeek[day.toStdString()] = baseDay;
-	}
-
-	for(const auto& member : teamMembers){
-		_planning[member.getId()] = baseWeek;
-	}
-
-	std::cout << *this << std::endl;
-	for(auto& member : teamMembers){
-		
-	}
+	
 
 	return _planning;
 }
