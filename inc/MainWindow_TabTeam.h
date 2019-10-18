@@ -41,6 +41,7 @@ private:
 	void initTeamTab(QTabWidget* tabWidget);
 	void resetTeamTab(QTabWidget* tabWidget);
 	void deleteTeamTab(QTabWidget* tabWidget);
+	void initTeamTable();
 	
 /* Atttributes of MainWindow */
 public:
@@ -67,5 +68,9 @@ private:
 
 		std::vector<TeamMember> teamMembers;
 		std::vector<TeamMember> selectedTeamMembers;
+
+		enum Columns {
+			ID, FIRSTNAME, LASTNAME, NBHOURS, DAYSOFF
+		};
 
 #endif //HEADER_MAINWINDOW_TAB_TEAM

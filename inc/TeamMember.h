@@ -11,6 +11,18 @@ class TeamMember {
         ~TeamMember();
         friend std::ostream & operator<<(std::ostream &os, const TeamMember &tm);
 
+        int getId();
+        double getNbHours();
+        QString getFirstName();
+        QString getLastName();
+        std::vector<QString> getDaysOff();
+
+        void setId(int _id);
+        void setNbHours(double _nbHours);
+        void setFirstName(QString _firstName);
+        void setLastName(QString _lastName);
+        void setDaysOff(std::vector<QString> &_daysOff);
+
     private:
         int id;
         double nbHours;

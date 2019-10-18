@@ -33,6 +33,8 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 	QStringList headers = { "Id", "First name", "Last name", "Nb of hours", "Days off"};
 	_teamTable->setHorizontalHeaderLabels(headers);
 
+	initTeamTable();
+
 	_teamCenter->setLayout(_teamLay);
 	_teamLay->addWidget(_teamTable);
 }
@@ -47,6 +49,12 @@ void MainWindow::addMember() {
 void MainWindow::editMember() {
 	for(auto &e : teamMembers) {
 		std::cout << e << std::endl;
+	}
+}
+
+void MainWindow::initTeamTable() {
+	for(auto &e : teamMembers) {
+		_teamTable->setItem(_teamTable->rowCount(), ID, new QTableWidgetItem(QString::number(e.getId())));
 	}
 }
 
