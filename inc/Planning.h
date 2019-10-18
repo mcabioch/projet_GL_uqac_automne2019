@@ -18,6 +18,9 @@ class Planning {
 		friend std::ostream& operator<<(std::ostream& os, const Planning& p);
 
 	private:
+		std::vector<std::pair<std::string, size_t>> getBestSlots(const Globals& globals, const TeamMember& member, std::map<std::string, std::vector<bool>> memberPlanning, std::map<std::string, std::vector<int>> globalPlanning);
+
+	private:
 		std::map<int, std::map<std::string, std::vector<bool>>> _planning;
 };
 
