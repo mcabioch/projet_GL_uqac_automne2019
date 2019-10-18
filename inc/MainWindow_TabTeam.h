@@ -1,7 +1,6 @@
 #ifndef HEADER_MAINWINDOW_TAB_TEAM
 #define HEADER_MAINWINDOW_TAB_TEAM
 
-
 /* Members of MainWindow */
 public:
 	/* Internal enums of MainWindow */
@@ -20,7 +19,9 @@ public:
 		
 
 public slots:
-	
+	void addMember();
+	void editMember(int memberId);
+	void deleteMember(int memberId);
 
 signals:
 	
@@ -35,13 +36,12 @@ protected:
 	/* Friends of MainWindow */
 		
 	/* Others members of MainWindow */
-		void initTeamTab(QTabWidget* tabWidget);
-		void resetTeamTab(QTabWidget* tabWidget);
-		void deleteTeamTab(QTabWidget* tabWidget);
 
 private:
+	void initTeamTab(QTabWidget* tabWidget);
+	void resetTeamTab(QTabWidget* tabWidget);
+	void deleteTeamTab(QTabWidget* tabWidget);
 	
-
 /* Atttributes of MainWindow */
 public:
 	/* Global */
@@ -59,7 +59,10 @@ private:
 	/* Global */
 		
 	/* Local */
-		QWidget* _teamTab;
+		QMainWindow* _teamTab;
 		QVBoxLayout* _teamLay;
+		QToolBar* _teamToolBar;
+		std::vector<TeamMember> teamMembers;
+		std::vector<TeamMember> selectedTeamMembers;
 
 #endif //HEADER_MAINWINDOW_TAB_TEAM

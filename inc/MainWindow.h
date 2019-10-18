@@ -1,8 +1,8 @@
 #ifndef HEADER_MAINWINDOW
 #define HEADER_MAINWINDOW
 
-#include "Widgets/Qt.hpp"
 #include "TeamMember.h"
+#include "AddMemberModal.h"
 
 /*!
 * \class	MainWindow
