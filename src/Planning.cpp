@@ -50,7 +50,7 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals& globals, const TeamMember& member, const std::map<std::string, std::vector<bool>>& memberPlanning, const std::map<std::string, std::vector<int>>&/* globalPlanning*/) {
 	std::vector<std::pair<std::string, size_t>> out;
 
-	auto available = out;
+	/*auto available = out;
 	for(auto& day : _weekdays){
 		auto g_worked_b = globals.workedDays.begin();
 		auto g_worked_e = globals.workedDays.end();
@@ -74,7 +74,7 @@ std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals
 				available.push_back(std::make_pair(day, i));
 			}
 		}
-	}
+	}*/
 
 	
 
