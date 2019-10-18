@@ -125,13 +125,33 @@ void MainWindow::generalAllCheckstate(int state){
 }
 
 void MainWindow::generalSaveDatas(){
-	
+	auto globals = translate();
+
+	std::cout << globals << std::endl;
 }
 
 void MainWindow::generalCalculate(){
-	
+	auto globals = translate();
 
 	
+}
+
+Globals MainWindow::translate(){
+	Globals out;
+
+	auto min = _g_minTimeEdit->time();
+	auto max = _g_maxTimeEdit->time();
+
+	out.startMin = static_cast<float>(min.hour()) + static_cast<float>(min.minute()) / 60.0 + static_cast<float>(min.second()) / 3600.0;
+	out.endMax = static_cast<float>(max.hour()) + static_cast<float>(max.minute()) / 60.0 + static_cast<float>(max.second()) / 3600.0;
+	out.nbHours = _g_defaultHoursEdit->value();
+	for(auto& checkbox : _g_daysCheckboxes){
+		if(checkbox.second->checkState() != Qt::Unchecked){
+			out.workedDays.push_back(checkbox.first.toStdString());
+		}
+	}
+
+	return out;
 }
 
 void MainWindow::resetGeneralTab(QTabWidget* tabWidget){

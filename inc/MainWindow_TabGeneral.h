@@ -43,6 +43,8 @@ private:
 	void resetGeneralTab(QTabWidget* tabWidget);
 	void deleteGeneralTab(QTabWidget* tabWidget);
 
+	Globals translate();
+
 /* Atttributes of MainWindow */
 public:
 	/* Global */

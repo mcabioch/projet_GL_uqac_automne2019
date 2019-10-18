@@ -2,3 +2,6 @@
 */*.o
 *.pro
 Makefile
+
+planning_generator
+projet_GL_uqac_automne2019
