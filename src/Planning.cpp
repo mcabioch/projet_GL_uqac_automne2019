@@ -5,6 +5,10 @@ Planning::Planning() :
 {}
 
 std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(const Globals& globals, const std::vector<TeamMember>& teamMembers, const std::vector<QString>& weekdays){
+	for(const auto& day : weekdays){
+		_weekdays.push_back(day.toStdString());
+	}
+
 	std::vector<bool> baseDay;
 	std::vector<int> nbMemberPerDay;
 	for(size_t i = 0; i < 24*15; ++i){
@@ -14,9 +18,9 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 
 	std::map<std::string, std::vector<bool>> baseWeek;
 	std::map<std::string, std::vector<int>> globalPlanning;
-	for(const auto& day : weekdays){
-		baseWeek[day.toStdString()] = baseDay;
-		globalPlanning[day.toStdString()] = nbMemberPerDay;
+	for(const auto& day : _weekdays){
+		baseWeek[day] = baseDay;
+		globalPlanning[day] = nbMemberPerDay;
 	}
 
 	for(const auto& member : teamMembers){
@@ -41,7 +45,23 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals& globals, const TeamMember& member, std::map<std::string, std::vector<bool>> memberPlanning, std::map<std::string, std::vector<int>> globalPlanning) {
 	std::vector<std::pair<std::string, size_t>> out;
 
-	
+	auto available = out;
+	for(auto& day : _weekdays){
+		auto g_worked_b = globals.workedDays.begin();
+		auto g_worked_e = globals.workedDays.end();
+
+		auto t_off_b = member.daysOff.begin();
+		auto t_off_e = member.daysOff.end();
+
+		if(std::find(g_worked_b, g_worked_e, day) == g_worked_e){
+			continue;
+		}
+		if(std::find(t_off_b, t_off_e, day) != t_off_e){
+			continue;
+		}
+
+		
+	}
 
 	return out;
 }

@@ -16,7 +16,7 @@ class TeamMember {
 
         int getId()const { return id; }
 
-    private:
+    public:
         int id;
         double nbHours;
         QString firstName, lastName;

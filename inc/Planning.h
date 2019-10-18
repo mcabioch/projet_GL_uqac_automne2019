@@ -22,6 +22,7 @@ class Planning {
 
 	private:
 		std::map<int, std::map<std::string, std::vector<bool>>> _planning;
+		std::vector<std::string> _weekdays;
 };
 
 #endif //HEADER_PLANNING
