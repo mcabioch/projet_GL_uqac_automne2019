@@ -47,7 +47,7 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 	return _planning;
 }
 
-std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals& globals, const TeamMember& member, const std::map<std::string, std::vector<bool>>& memberPlanning, const std::map<std::string, std::vector<int>>& globalPlanning) {
+std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals& globals, const TeamMember& member, const std::map<std::string, std::vector<bool>>& memberPlanning, const std::map<std::string, std::vector<int>>&/* globalPlanning*/) {
 	std::vector<std::pair<std::string, size_t>> out;
 
 	auto available = out;
@@ -55,8 +55,8 @@ std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals
 		auto g_worked_b = globals.workedDays.begin();
 		auto g_worked_e = globals.workedDays.end();
 
-		auto t_off_b = member.daysOff.begin();
-		auto t_off_e = member.daysOff.end();
+		auto t_off_b = member.getDaysOff().begin();
+		auto t_off_e = member.getDaysOff().end();
 
 		if(std::find(g_worked_b, g_worked_e, day) == g_worked_e){
 			continue;
@@ -81,7 +81,7 @@ std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals
 	return out;
 }
 
-std::string Planning::toCSV(const Globals& globals, const std::vector<TeamMember>& teamMembers, std::string separator){
+std::string Planning::toCSV(const Globals&/* globals*/, const std::vector<TeamMember>& teamMembers, std::string separator){
 	std::string csv = "";
 
 	for(auto& day : _weekdays){
@@ -90,9 +90,9 @@ std::string Planning::toCSV(const Globals& globals, const std::vector<TeamMember
 	csv += "\n";
 
 	for(auto& member : teamMembers){
-		csv += member.firstName.toStdString() + " " + member.lastName.toStdString();
+		csv += member.getFirstName().toStdString() + " " + member.getLastName().toStdString();
 
-		for(auto& slot : _planning[member.getId()][day]){
+		/*for(auto& slot : _planning[member.getId()][day]){
 			for(auto& day : _weekdays){
 				if(slot){
 					csv += separator;
@@ -100,7 +100,7 @@ std::string Planning::toCSV(const Globals& globals, const std::vector<TeamMember
 					csv += separator + "?";
 				}
 			}
-		}
+		}*/
 	}
 
 	return csv;

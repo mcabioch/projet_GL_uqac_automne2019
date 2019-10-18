@@ -103,7 +103,7 @@ void MainWindow::initGeneralTab(QTabWidget* tabWidget, Globals initGlob){
 /*****************************/
 }
 
-void MainWindow::deleteGeneralTab(QTabWidget* tabWidget){
+void MainWindow::deleteGeneralTab(QTabWidget*/* tabWidget*/){
 	deletePtr(_g_toolBar);
 
 	deletePtr(_g_minTimeEdit);
