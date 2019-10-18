@@ -53,7 +53,8 @@ protected:
 	/* Global */
 		
 	/* Local */
-		
+		Globals _globals;
+		std::vector<TeamMember> _teamMembers;
 
 private:
 	/* Global */
