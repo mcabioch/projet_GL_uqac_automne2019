@@ -92,11 +92,18 @@ void AddMemberModal::addNewMember() {
 	}
 
     int memberId = static_cast<int>(teamMembers.size())+1;
-    int pos = teamTable.rowCount() - 1;
+    int pos = teamTable.rowCount();
+    double hpw = hoursPerWeek->value();
+    QString fn = firstName->text();
+    QString ln = lastName->text();
     
-    teamMembers.push_back(TeamMember(memberId, hoursPerWeek->value(), firstName->text(), lastName->text(), daysOff));
+    teamMembers.push_back(TeamMember(memberId, hpw, fn, ln, daysOff));
     teamTable.insertRow(pos);
-    teamTable.setItem(pos, ID, new QTableWidgetItem(QString::number(memberId)));
+    teamTable.setItem(pos, Columns::ID, new QTableWidgetItem(QString::number(memberId)));
+    teamTable.setItem(pos, Columns::FIRSTNAME, new QTableWidgetItem(fn));
+    teamTable.setItem(pos, Columns::LASTNAME, new QTableWidgetItem(ln));
+    teamTable.setItem(pos, Columns::NBHOURS, new QTableWidgetItem(QString::number(hpw)));
+    //teamTable.setItem(pos, Columns::DAYSOFF, new QTableWidgetItem(QString::number(memberId)));
 
     this->close();
 }

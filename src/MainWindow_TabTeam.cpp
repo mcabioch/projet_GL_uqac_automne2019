@@ -6,9 +6,11 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 	_teamToolBar = new QToolBar();
 	_teamTable = new QTableWidget();
 	_teamLay = new QVBoxLayout();
-	
+
 	tabWidget->addTab(_teamTab, "Team");
 	_teamTab->addToolBar(_teamToolBar);
+	_teamToolBar->setFloatable(false);
+	_teamToolBar->setMovable(false);
 	_teamTab->setCentralWidget(_teamCenter);
 
 	const QIcon addIcon = QIcon("./res/icons/add-icon.png");
@@ -30,7 +32,7 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 	_teamToolBar->addAction(deleteAct);
 
 	_teamTable->setColumnCount(5);
-	QStringList headers = { "Id", "First name", "Last name", "Nb of hours", "Days off"};
+	QStringList headers = { "Id", "First name", "Last name", "Nb of hours per week", "Days off"};
 	_teamTable->setHorizontalHeaderLabels(headers);
 
 	initTeamTable();
@@ -40,7 +42,6 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 }
 
 void MainWindow::addMember() {
-	std::cout << "test" << std::endl;
 	AddMemberModal newMember(this, _weekdays, teamMembers, *_teamTable);
 	newMember.setModal(true);
 	newMember.exec();
@@ -54,12 +55,27 @@ void MainWindow::editMember() {
 
 void MainWindow::initTeamTable() {
 	for(auto &e : teamMembers) {
-		_teamTable->setItem(_teamTable->rowCount() - 1, ID, new QTableWidgetItem(QString::number(e.getId())));
+		_teamTable->setItem(_teamTable->rowCount() - 1, AddMemberModal::Columns::ID, new QTableWidgetItem(QString::number(e.getId())));
 	}
+
+	connect(_teamTable, SIGNAL(cellClicked(int, int)), this, SLOT(updateSelectedMember(int, int)));
+}
+
+void MainWindow::updateSelectedMember(int row, int column) {
+	selectedMember = row;
 }
 
 void MainWindow::deleteMember() {
 	std::cout << "test2" << std::endl;
+
+	QMessageBox::StandardButton reply = QMessageBox::warning(this, "Confirmation", "Are you sure you want to delete this member ?", QMessageBox::No | QMessageBox::Yes);
+
+	if(reply == QMessageBox::Yes) {
+		teamMembers.erase(teamMembers.begin()+selectedMember);
+		_teamTable->removeRow(selectedMember);
+	} else {
+		std::cout<<"no"<<std::endl;
+	}
 }
 
 void MainWindow::deleteTeamTab(QTabWidget* tabWidget){

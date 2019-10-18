@@ -22,6 +22,7 @@ public slots:
 	void addMember();
 	void editMember();
 	void deleteMember();
+	void updateSelectedMember(int row, int column);
 
 signals:
 	
@@ -65,6 +66,8 @@ private:
 		QVBoxLayout* _teamLay;
 		QToolBar* _teamToolBar;
 		QTableWidget *_teamTable;
+
+		int selectedMember;
 
 		std::vector<TeamMember> teamMembers;
 		std::vector<TeamMember> selectedTeamMembers;

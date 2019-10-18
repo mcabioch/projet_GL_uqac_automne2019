@@ -10,6 +10,10 @@ class AddMemberModal : public QDialog {
     public :
         AddMemberModal(QWidget *parent, const std::vector<QString> &weekdays, std::vector<TeamMember> &teamMembers, QTableWidget &_teamTable);
         virtual ~AddMemberModal();
+
+        enum Columns {
+			ID, FIRSTNAME, LASTNAME, NBHOURS, DAYSOFF
+		};
         
     private :
         QGridLayout *mainLayout;
@@ -24,10 +28,6 @@ class AddMemberModal : public QDialog {
 		QLabel *hoursPerWeekLabel;
 		QDoubleSpinBox *hoursPerWeek;
         QPushButton *confirmButton;
-
-        enum Columns {
-			ID, FIRSTNAME, LASTNAME, NBHOURS, DAYSOFF
-		};
 
         std::vector<QString> daysOff, weekdays;
         std::vector<TeamMember> &teamMembers;
