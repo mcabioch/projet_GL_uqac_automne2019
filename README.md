@@ -1,1 +1,1 @@
-# projet_GL_uqac_automne2019
+# projet GL UQAC Automne 2019
