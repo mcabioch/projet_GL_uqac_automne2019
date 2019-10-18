@@ -8,7 +8,7 @@ class AddMemberModal : public QDialog {
     Q_OBJECT
 
     public :
-        AddMemberModal(QWidget *parent, const std::vector<QString> &weekdays, std::vector<TeamMember> &teamMembers);
+        AddMemberModal(QWidget *parent, const std::vector<QString> &weekdays, std::vector<TeamMember> &teamMembers, QTableWidget &_teamTable);
         virtual ~AddMemberModal();
         
     private :
@@ -25,9 +25,13 @@ class AddMemberModal : public QDialog {
 		QDoubleSpinBox *hoursPerWeek;
         QPushButton *confirmButton;
 
+        enum Columns {
+			ID, FIRSTNAME, LASTNAME, NBHOURS, DAYSOFF
+		};
 
         std::vector<QString> daysOff, weekdays;
         std::vector<TeamMember> &teamMembers;
+        QTableWidget &teamTable;
 		std::map<QString, QCheckBox*> _t_daysCheckboxes;
         int workTime;
 

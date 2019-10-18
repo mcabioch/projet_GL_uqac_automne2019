@@ -69,8 +69,4 @@ private:
 		std::vector<TeamMember> teamMembers;
 		std::vector<TeamMember> selectedTeamMembers;
 
-		enum Columns {
-			ID, FIRSTNAME, LASTNAME, NBHOURS, DAYSOFF
-		};
-
 #endif //HEADER_MAINWINDOW_TAB_TEAM

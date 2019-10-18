@@ -41,7 +41,7 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 
 void MainWindow::addMember() {
 	std::cout << "test" << std::endl;
-	AddMemberModal newMember(this, _weekdays, teamMembers);
+	AddMemberModal newMember(this, _weekdays, teamMembers, *_teamTable);
 	newMember.setModal(true);
 	newMember.exec();
 }
@@ -54,7 +54,7 @@ void MainWindow::editMember() {
 
 void MainWindow::initTeamTable() {
 	for(auto &e : teamMembers) {
-		_teamTable->setItem(_teamTable->rowCount(), ID, new QTableWidgetItem(QString::number(e.getId())));
+		_teamTable->setItem(_teamTable->rowCount() - 1, ID, new QTableWidgetItem(QString::number(e.getId())));
 	}
 }
 

@@ -1,8 +1,9 @@
 #include "AddMemberModal.h"
 
-AddMemberModal::AddMemberModal(QWidget *parent, const std::vector<QString> &_weekdays, std::vector<TeamMember> &_teamMembers) :
+AddMemberModal::AddMemberModal(QWidget *parent, const std::vector<QString> &_weekdays, std::vector<TeamMember> &_teamMembers, QTableWidget &_teamTable) :
     QDialog(parent),
-    teamMembers(_teamMembers)
+    teamMembers(_teamMembers),
+    teamTable(_teamTable)
 {
     weekdays = _weekdays;
     this->setWindowTitle("New team member");
@@ -89,7 +90,13 @@ void AddMemberModal::addNewMember() {
             daysOff.push_back(checkbox.first);
         }
 	}
+
+    int memberId = static_cast<int>(teamMembers.size())+1;
+    int pos = teamTable.rowCount() - 1;
     
-    teamMembers.push_back(TeamMember(static_cast<int>(teamMembers.size())+1, hoursPerWeek->value(), firstName->text(), lastName->text(), daysOff));
+    teamMembers.push_back(TeamMember(memberId, hoursPerWeek->value(), firstName->text(), lastName->text(), daysOff));
+    teamTable.insertRow(pos);
+    teamTable.setItem(pos, ID, new QTableWidgetItem(QString::number(memberId)));
+
     this->close();
 }
