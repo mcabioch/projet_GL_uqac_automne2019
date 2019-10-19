@@ -57,7 +57,7 @@ std::map<int, std::map<std::string, std::vector<bool>>> Planning::calculate(cons
 std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals& globals,
 																   const TeamMember& member,
 																   const std::map<std::string, std::vector<bool>>& memberPlanning,
-																   const std::map<std::string, std::vector<int>>&/* globalPlanning*/,
+																   const std::map<std::string, std::vector<int>>& globalPlanning,
 																   const std::vector<Pause>& pauses
 																  ) {
 	std::vector<std::pair<std::string, size_t>> out;
@@ -67,6 +67,8 @@ std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals
 	_pauses.push_back({globals.endMax, 24});
 
 	auto available = out;
+	std::vector<size_t> weights;
+
 	for(auto& day : _weekdays){
 		auto g_worked_b = globals.workedDays.begin();
 		auto g_worked_e = globals.workedDays.end();
@@ -88,12 +90,13 @@ std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals
 
 			if(!isPause(actHour, _pauses)){
 				available.push_back(std::make_pair(day, i));
+				weights.push_back(i);
 			}
 		}
 	}
 
 	std::cout << "### Availability" << std::endl;
-	std::cout << member.getFirstName().toStdString() << " " << member.getLastName().toStdString() << std::endl;
+	/*std::cout << member.getFirstName().toStdString() << " " << member.getLastName().toStdString() << std::endl;
 	std::string precDay = "";
 	for(auto& data : available){
 		if(precDay != data.first){
@@ -104,6 +107,20 @@ std::vector<std::pair<std::string, size_t>> Planning::getBestSlots(const Globals
 		std::cout << static_cast<float>(data.second) / _freq << " ";
 	}
 	std::cout << std::endl;
+
+	precDay = "";
+	for(size_t i = 0; i < available.size(); ++i){
+		auto& data = available[i];
+		auto& weight = weights[i];
+
+		if(precDay != data.first){
+			precDay = data.first;
+			std::cout << std::endl;
+			std::cout << precDay << std::endl;
+		}
+		std::cout << weight << " ";
+	}
+	std::cout << std::endl;*/
 
 	return out;
 }
