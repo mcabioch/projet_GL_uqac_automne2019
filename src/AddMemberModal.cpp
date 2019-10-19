@@ -98,12 +98,18 @@ void AddMemberModal::addNewMember() {
     QString ln = lastName->text();
     
     teamMembers.push_back(TeamMember(memberId, hpw, fn, ln, daysOff));
+    
+    QString doff = teamMembers.back().daysOffToQString();
     teamTable.insertRow(pos);
-    teamTable.setItem(pos, Columns::ID, new QTableWidgetItem(QString::number(memberId)));
+
+    QTableWidgetItem *idItem = new QTableWidgetItem(QString::number(memberId));
+    idItem->setFlags(idItem->flags() ^ Qt::ItemIsEditable);
+
+    teamTable.setItem(pos, Columns::ID, idItem);
     teamTable.setItem(pos, Columns::FIRSTNAME, new QTableWidgetItem(fn));
     teamTable.setItem(pos, Columns::LASTNAME, new QTableWidgetItem(ln));
     teamTable.setItem(pos, Columns::NBHOURS, new QTableWidgetItem(QString::number(hpw)));
-    //teamTable.setItem(pos, Columns::DAYSOFF, new QTableWidgetItem(QString::number(memberId)));
+    teamTable.setItem(pos, Columns::DAYSOFF, new QTableWidgetItem(doff));
 
     this->close();
 }

@@ -20,7 +20,7 @@ public:
 
 public slots:
 	void addMember();
-	void editMember();
+	void editMember(QTableWidgetItem *item);
 	void deleteMember();
 	void updateSelectedMember(int row, int column);
 
@@ -49,7 +49,7 @@ public:
 	/* Global */
 		
 	/* Local */
-		
+	friend bool operator==(const TeamMember& a, const int& b);
 
 protected:
 	/* Global */

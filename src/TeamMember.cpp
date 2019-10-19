@@ -47,3 +47,23 @@ std::ifstream & operator>>(std::ifstream &is, TeamMember &tm) {
 
     return is;
 }
+
+
+void TeamMember::setDaysOffFromQString(QString _daysOff) {
+    QStringList qsl = _daysOff.split(' ');
+    daysOff.clear();
+
+    for(int i = 0; i < qsl.size(); ++i) {
+        daysOff.push_back(qsl.at(i).toLocal8Bit().constData());
+    }
+}
+
+QString TeamMember::daysOffToQString() {
+    QString qs = "";
+    
+    for(auto &a : daysOff) {
+        qs.append(a + " ");
+    }
+
+    return qs;
+}

@@ -19,11 +19,11 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 	connect(addAct, &QAction::triggered, this, &MainWindow::addMember);
 	_teamToolBar->addAction(addAct);
 
-	const QIcon editIcon = QIcon("./res/icons/edit-icon.png");
+	/*const QIcon editIcon = QIcon("./res/icons/edit-icon.png");
 	QAction *editAct = new QAction(editIcon, tr("&Edit Member"), _teamTab);
 	editAct->setStatusTip(tr("Edit a team member"));
 	connect(editAct, SIGNAL(triggered()), this, SLOT(editMember()));
-	_teamToolBar->addAction(editAct);
+	_teamToolBar->addAction(editAct);*/
 	
 	const QIcon deleteIcon = QIcon("./res/icons/delete-icon.png");
 	QAction *deleteAct = new QAction(deleteIcon, tr("&Delete Member"), _teamTab);
@@ -41,17 +41,7 @@ void MainWindow::initTeamTab(QTabWidget* tabWidget){
 	_teamLay->addWidget(_teamTable);
 }
 
-void MainWindow::addMember() {
-	AddMemberModal newMember(this, _weekdays, teamMembers, *_teamTable);
-	newMember.setModal(true);
-	newMember.exec();
-}
-
-void MainWindow::editMember() {
-	for(auto &e : teamMembers) {
-		std::cout << e << std::endl;
-	}
-}
+bool operator==(const TeamMember& a, const int& b){ return (a.getId() == b); }
 
 void MainWindow::initTeamTable() {
 	for(auto &e : teamMembers) {
@@ -59,12 +49,50 @@ void MainWindow::initTeamTable() {
 	}
 
 	connect(_teamTable, SIGNAL(cellClicked(int, int)), this, SLOT(updateSelectedMember(int, int)));
+	connect(_teamTable, SIGNAL(itemChanged(QTableWidgetItem*)), this, SLOT(editMember(QTableWidgetItem*)));
 }
 
 void MainWindow::updateSelectedMember(int row, int column) {
 	selectedMember = row;
 }
 
+void MainWindow::addMember() {
+	AddMemberModal newMember(this, _weekdays, teamMembers, *_teamTable);
+	newMember.setModal(true);
+	newMember.exec();
+}
+
+void MainWindow::editMember(QTableWidgetItem *item) {
+	std::cout << "CHANGED" << std::endl;
+	
+	QTableWidgetItem *idItem = new QTableWidgetItem;
+	idItem = _teamTable->item(item->row(), AddMemberModal::Columns::ID);
+
+	int memberId = idItem->text().toInt();
+	std::cout << "id: "<< memberId << std::endl;
+
+	auto member = std::find(teamMembers.begin(), teamMembers.end(), memberId);
+
+	std::cout << "MEMBER : " << *member << std::endl;
+
+	switch(item->column()) {
+		case AddMemberModal::Columns::FIRSTNAME :
+			member->setFirstName(item->text());
+			break;
+		
+		case AddMemberModal::Columns::LASTNAME :
+			member->setLastName(item->text());
+			break;
+		
+		case AddMemberModal::Columns::NBHOURS :
+			member->setNbHours(item->text().toDouble());
+			break;
+		
+		case AddMemberModal::Columns::DAYSOFF :
+			member->setDaysOffFromQString(item->text());
+	}
+}
+ 
 void MainWindow::deleteMember() {
 	std::cout << "test2" << std::endl;
 
@@ -88,3 +116,4 @@ void MainWindow::resetTeamTab(QTabWidget* tabWidget){
 	deleteTeamTab(tabWidget);
 	initTeamTab(tabWidget);
 }
+

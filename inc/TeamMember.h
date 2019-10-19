@@ -25,6 +25,8 @@ class TeamMember {
         void setFirstName(QString _firstName) { firstName = _firstName; }
         void setLastName(QString _lastName) { lastName = _lastName; }
         void setDaysOff(std::vector<QString> &_daysOff) { daysOff = _daysOff; }
+        void setDaysOffFromQString(QString _daysOff);
+        QString daysOffToQString();
 
 
     private:
