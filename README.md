@@ -19,7 +19,7 @@ make run
 
 ## Currently working features
 
-This project is still a work in progress. Thus, ony a few features are available for now including : 
+This project is still a work in progress. Thus, only a few features are available for now including : 
 - Choosing general working days
 - Choosing default number of working hours
 - Choosing minimum start of the day and maximum end of the day
