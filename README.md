@@ -14,7 +14,7 @@ make
 ## Usage
 Simply launch the software in a terminal :
 ```bash
-./[folder_name]
+make run
 ```
 
 ## Currently working features
