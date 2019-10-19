@@ -2,7 +2,7 @@
 
 🔨 *WORK IN PROGRESS* 🔨
 
-PlanMaker is a C++11/Qt5 software that generates plannings for your team according to specified constraints.
+PlanMaker is a C++14/Qt5 software that generates plannings for your team according to specified constraints.
 
 
 ## Installation
