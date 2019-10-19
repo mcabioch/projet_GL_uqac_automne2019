@@ -222,6 +222,9 @@ QTIN = ~/Bureau/Algo/QTTests/Widgets
 QTOUT = ./inc/Widgets
 
 PROJECTFILE = $(wildcard *.pro)
+ifeq ($(PROJECTFILE),)
+	PROJECTFILE = $(EXE).pro
+endif
 
 LIBCIN = $(wildcard ~/Bureau/Algo/CTests/C/lib/*.a)
 LIBCOUT = $(addprefix $(LIBDIR)/, $(notdir $(LIBCIN)))
@@ -242,6 +245,7 @@ ARCHNAME = $(FIN_EXE)
 #
 all:
 	qmake -project
+	if [ ! -f $(PROJECTFILE) ]; then qmake -project; fi
 	echo "\nQT += gui core widgets" >> $(PROJECTFILE)
 #
 	qmake
