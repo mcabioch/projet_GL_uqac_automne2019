@@ -117,6 +117,12 @@ void deletePtr(T& pointer){
 	pointer = nullptr;
 }
 
+struct replaceParams {
+	bool regex;
+	bool word;
+	bool insensitive;
+};
+
 /*!
 * \brief	Replace something by something else in a string using regex_replace
 *		\param[in]		str				The string to treat
@@ -128,7 +134,7 @@ void deletePtr(T& pointer){
 *
 *		\return			Return the changed string
 */
-std::string replace(const std::string& str, const std::string& from, const std::string& to, bool regex = false, bool word = false, bool insensitive = false);
+std::string replace(const std::string& str, const std::string& from, const std::string& to, const replaceParams& params = {false, false, false});
 
 /*!
 * \brief Read a Cascade Style Sheet and translate it for Qt

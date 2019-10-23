@@ -88,44 +88,44 @@ std::vector<std::string> getlines(std::ifstream& input){
 	return out;
 }
 
-std::string replace(const std::string& str, const std::string& from, const std::string& to, bool regex, bool word, bool insensitive){
+std::string replace(const std::string& str, const std::string& from, const std::string& to, const replaceParams& params){
 	std::regex str_regex;
 	auto inside_from = from;
 	auto inside_to = to;
 
 	try {
-		if(!regex){
-			std::vector<std::pair<std::string, std::string>> masks;
+		if(!params.regex){
+			std::vector<std::pair<std::string, std::string>> masks = {
+				{"\\\\", "\\\\"},
 
-			masks.push_back(std::make_pair("\\\\", "\\\\"));
+				{"\\(", "\\("},
+				{"\\)", "\\)"},
+				{"\\[", "\\["},
+				{"\\]", "\\]"},
+				{"\\{", "\\{"},
+				{"\\}", "\\}"},
 
-			masks.push_back(std::make_pair("\\(", "\\("));
-			masks.push_back(std::make_pair("\\)", "\\)"));
-			masks.push_back(std::make_pair("\\[", "\\["));
-			masks.push_back(std::make_pair("\\]", "\\]"));
-			masks.push_back(std::make_pair("\\{", "\\{"));
-			masks.push_back(std::make_pair("\\}", "\\}"));
-
-			masks.push_back(std::make_pair("\\.", "\\."));
-			masks.push_back(std::make_pair("\\*", "\\*"));
-			masks.push_back(std::make_pair("\\-", "\\-"));
-			masks.push_back(std::make_pair("\\|", "\\|"));
-			masks.push_back(std::make_pair("\\?", "\\?"));
-			masks.push_back(std::make_pair("\\+", "\\+"));
-			masks.push_back(std::make_pair("\\^", "\\^"));
-			masks.push_back(std::make_pair("\\$", "\\$"));
+				{"\\.", "\\."},
+				{"\\*", "\\*"},
+				{"\\-", "\\-"},
+				{"\\|", "\\|"},
+				{"\\?", "\\?"},
+				{"\\+", "\\+"},
+				{"\\^", "\\^"},
+				{"\\$", "\\$"},
+			};
 
 			for(auto mask : masks){
-				inside_from = replace(inside_from, mask.first, mask.second, true);
+				inside_from = replace(inside_from, mask.first, mask.second, {true, false, false});
 			}
 		}
 
-		if(word){
+		if(params.word){
 			inside_from = "([^a-zA-Z0-9_-])" + inside_from + "(?![a-zA-Z0-9_-])";
 			inside_to = "$1" + inside_to;
 		}
 
-		if(insensitive){ str_regex.assign(from, std::regex_constants::icase); }
+		if(params.insensitive){ str_regex.assign(from, std::regex_constants::icase); }
 		else{ str_regex.assign(inside_from); }
 	} catch(std::regex_error& e){
 		std::cout << "Regex Error" << std::endl << "An error occured during the replacement in \n'" << str << "'\n where '" << inside_from << "' has to be replaced by '" << inside_to << "'\n" << e.what() << std::endl;
