@@ -40,9 +40,5 @@
 #define HEADER_QT
 
 #include "QtDefines.hpp"
-#include "Window.hpp"
-#include "TableWidget.hpp"
-#include "String.hpp"
-#include "Lines.hpp"
 
 #endif //HEADER_QT

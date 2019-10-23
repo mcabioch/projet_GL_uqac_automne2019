@@ -59,33 +59,8 @@ SOURCES       = src/AddMemberModal.cpp \
 		src/MainWindow_TabTeam.cpp \
 		src/Planning.cpp \
 		src/TeamMember.cpp \
-		inc/Widgets/DrawScene.cpp \
-		inc/Widgets/Font.cpp \
-		inc/Widgets/GraphScene.cpp \
-		inc/Widgets/Lines.cpp \
-		inc/Widgets/QtFunctions.cpp \
-		inc/Widgets/Scene.cpp \
-		inc/Widgets/String.cpp \
-		inc/Widgets/TableWidget.cpp \
-		inc/Widgets/Widget.cpp \
-		inc/Widgets/Window.cpp \
-		inc/Widgets/Window_Draw.cpp \
-		inc/Widgets/Window_Event.cpp \
-		inc/Widgets/WindowButton.cpp \
-		inc/Widgets/WindowTitleBar.cpp \
-		inc/Widgets/WindowTitleBar_Buttons.cpp \
-		inc/Widgets/WindowTitleBar_Draw.cpp \
-		inc/Widgets/WindowTitleBar_Event.cpp moc_AddMemberModal.cpp \
-		moc_MainWindow.cpp \
-		moc_DrawScene.cpp \
-		moc_GraphScene.cpp \
-		moc_Lines.cpp \
-		moc_Scene.cpp \
-		moc_TableWidget.cpp \
-		moc_Widget.cpp \
-		moc_Window.cpp \
-		moc_WindowButton.cpp \
-		moc_WindowTitleBar.cpp
+		inc/Widgets/QtFunctions.cpp moc_AddMemberModal.cpp \
+		moc_MainWindow.cpp
 OBJECTS       = AddMemberModal.o \
 		Globals.o \
 		main.o \
@@ -95,34 +70,9 @@ OBJECTS       = AddMemberModal.o \
 		MainWindow_TabTeam.o \
 		Planning.o \
 		TeamMember.o \
-		DrawScene.o \
-		Font.o \
-		GraphScene.o \
-		Lines.o \
 		QtFunctions.o \
-		Scene.o \
-		String.o \
-		TableWidget.o \
-		Widget.o \
-		Window.o \
-		Window_Draw.o \
-		Window_Event.o \
-		WindowButton.o \
-		WindowTitleBar.o \
-		WindowTitleBar_Buttons.o \
-		WindowTitleBar_Draw.o \
-		WindowTitleBar_Event.o \
 		moc_AddMemberModal.o \
-		moc_MainWindow.o \
-		moc_DrawScene.o \
-		moc_GraphScene.o \
-		moc_Lines.o \
-		moc_Scene.o \
-		moc_TableWidget.o \
-		moc_Widget.o \
-		moc_Window.o \
-		moc_WindowButton.o \
-		moc_WindowTitleBar.o
+		moc_MainWindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -206,21 +156,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		inc/PAL.h \
 		inc/Planning.h \
 		inc/TeamMember.h \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Lines.hpp \
 		inc/Widgets/Qt.hpp \
 		inc/Widgets/QtDefines.hpp \
 		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/String.hpp \
-		inc/Widgets/TableWidget.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/Window.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/WindowTitleBar.hpp src/AddMemberModal.cpp \
+		inc/Widgets/Spacers.hpp src/AddMemberModal.cpp \
 		src/Globals.cpp \
 		src/main.cpp \
 		src/MainWindow.cpp \
@@ -229,23 +168,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		src/MainWindow_TabTeam.cpp \
 		src/Planning.cpp \
 		src/TeamMember.cpp \
-		inc/Widgets/DrawScene.cpp \
-		inc/Widgets/Font.cpp \
-		inc/Widgets/GraphScene.cpp \
-		inc/Widgets/Lines.cpp \
-		inc/Widgets/QtFunctions.cpp \
-		inc/Widgets/Scene.cpp \
-		inc/Widgets/String.cpp \
-		inc/Widgets/TableWidget.cpp \
-		inc/Widgets/Widget.cpp \
-		inc/Widgets/Window.cpp \
-		inc/Widgets/Window_Draw.cpp \
-		inc/Widgets/Window_Event.cpp \
-		inc/Widgets/WindowButton.cpp \
-		inc/Widgets/WindowTitleBar.cpp \
-		inc/Widgets/WindowTitleBar_Buttons.cpp \
-		inc/Widgets/WindowTitleBar_Draw.cpp \
-		inc/Widgets/WindowTitleBar_Event.cpp
+		inc/Widgets/QtFunctions.cpp
 QMAKE_TARGET  = planning_generator
 DESTDIR       = 
 TARGET        = planning_generator
@@ -427,8 +350,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents inc/AddMemberModal.h inc/Globals.h inc/MainWindow.h inc/MainWindow_TabGeneral.h inc/MainWindow_TabPlanning.h inc/MainWindow_TabTeam.h inc/MCD.h inc/PAL.h inc/Planning.h inc/TeamMember.h inc/Widgets/DrawScene.hpp inc/Widgets/Font.hpp inc/Widgets/GraphScene.hpp inc/Widgets/Lines.hpp inc/Widgets/Qt.hpp inc/Widgets/QtDefines.hpp inc/Widgets/QtFunctions.hpp inc/Widgets/Scene.hpp inc/Widgets/Spacers.hpp inc/Widgets/String.hpp inc/Widgets/TableWidget.hpp inc/Widgets/Widget.hpp inc/Widgets/Window.hpp inc/Widgets/WindowButton.hpp inc/Widgets/WindowTitleBar.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents src/AddMemberModal.cpp src/Globals.cpp src/main.cpp src/MainWindow.cpp src/MainWindow_TabGeneral.cpp src/MainWindow_TabPlanning.cpp src/MainWindow_TabTeam.cpp src/Planning.cpp src/TeamMember.cpp inc/Widgets/DrawScene.cpp inc/Widgets/Font.cpp inc/Widgets/GraphScene.cpp inc/Widgets/Lines.cpp inc/Widgets/QtFunctions.cpp inc/Widgets/Scene.cpp inc/Widgets/String.cpp inc/Widgets/TableWidget.cpp inc/Widgets/Widget.cpp inc/Widgets/Window.cpp inc/Widgets/Window_Draw.cpp inc/Widgets/Window_Event.cpp inc/Widgets/WindowButton.cpp inc/Widgets/WindowTitleBar.cpp inc/Widgets/WindowTitleBar_Buttons.cpp inc/Widgets/WindowTitleBar_Draw.cpp inc/Widgets/WindowTitleBar_Event.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents inc/AddMemberModal.h inc/Globals.h inc/MainWindow.h inc/MainWindow_TabGeneral.h inc/MainWindow_TabPlanning.h inc/MainWindow_TabTeam.h inc/MCD.h inc/PAL.h inc/Planning.h inc/TeamMember.h inc/Widgets/Qt.hpp inc/Widgets/QtDefines.hpp inc/Widgets/QtFunctions.hpp inc/Widgets/Spacers.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents src/AddMemberModal.cpp src/Globals.cpp src/main.cpp src/MainWindow.cpp src/MainWindow_TabGeneral.cpp src/MainWindow_TabPlanning.cpp src/MainWindow_TabTeam.cpp src/Planning.cpp src/TeamMember.cpp inc/Widgets/QtFunctions.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -460,24 +383,13 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -O2 -Wall -W -dM -E -o moc_predefs.h /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_AddMemberModal.cpp moc_MainWindow.cpp moc_DrawScene.cpp moc_GraphScene.cpp moc_Lines.cpp moc_Scene.cpp moc_TableWidget.cpp moc_Widget.cpp moc_Window.cpp moc_WindowButton.cpp moc_WindowTitleBar.cpp
+compiler_moc_header_make_all: moc_AddMemberModal.cpp moc_MainWindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_AddMemberModal.cpp moc_MainWindow.cpp moc_DrawScene.cpp moc_GraphScene.cpp moc_Lines.cpp moc_Scene.cpp moc_TableWidget.cpp moc_Widget.cpp moc_Window.cpp moc_WindowButton.cpp moc_WindowTitleBar.cpp
+	-$(DEL_FILE) moc_AddMemberModal.cpp moc_MainWindow.cpp
 moc_AddMemberModal.cpp: inc/Widgets/Qt.hpp \
 		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
 		inc/Widgets/Spacers.hpp \
 		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/Window.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/TableWidget.hpp \
-		inc/Widgets/String.hpp \
-		inc/Widgets/Lines.hpp \
 		inc/TeamMember.h \
 		inc/AddMemberModal.h \
 		moc_predefs.h \
@@ -488,19 +400,8 @@ moc_MainWindow.cpp: inc/PAL.h \
 		inc/TeamMember.h \
 		inc/Widgets/Qt.hpp \
 		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
 		inc/Widgets/Spacers.hpp \
 		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/Window.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/TableWidget.hpp \
-		inc/Widgets/String.hpp \
-		inc/Widgets/Lines.hpp \
 		inc/AddMemberModal.h \
 		inc/MCD.h \
 		inc/Globals.h \
@@ -512,95 +413,6 @@ moc_MainWindow.cpp: inc/PAL.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/MainWindow.h -o moc_MainWindow.cpp
-
-moc_DrawScene.cpp: inc/Widgets/Scene.hpp \
-		inc/Widgets/DrawScene.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/DrawScene.hpp -o moc_DrawScene.cpp
-
-moc_GraphScene.cpp: inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/GraphScene.hpp -o moc_GraphScene.cpp
-
-moc_Lines.cpp: inc/Widgets/Lines.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/Lines.hpp -o moc_Lines.cpp
-
-moc_Scene.cpp: inc/Widgets/Scene.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/Scene.hpp -o moc_Scene.cpp
-
-moc_TableWidget.cpp: inc/Widgets/Qt.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/Window.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/TableWidget.hpp \
-		inc/Widgets/String.hpp \
-		inc/Widgets/Lines.hpp \
-		inc/Widgets/TableWidget.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/TableWidget.hpp -o moc_TableWidget.cpp
-
-moc_Widget.cpp: inc/Widgets/Widget.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/Widget.hpp -o moc_Widget.cpp
-
-moc_Window.cpp: inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/Window.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/Window.hpp -o moc_Window.cpp
-
-moc_WindowButton.cpp: inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/WindowButton.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/WindowButton.hpp -o moc_WindowButton.cpp
-
-moc_WindowTitleBar.cpp: inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		moc_predefs.h \
-		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/home/mathias/Bureau/ISEN/UQAC/Cours2019-2020/Cours/T1_Genie_logiciel/Projet/planning_generator -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include inc/Widgets/WindowTitleBar.hpp -o moc_WindowTitleBar.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -643,179 +455,14 @@ Planning.o: src/Planning.cpp
 TeamMember.o: src/TeamMember.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TeamMember.o src/TeamMember.cpp
 
-DrawScene.o: inc/Widgets/DrawScene.cpp inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DrawScene.o inc/Widgets/DrawScene.cpp
-
-Font.o: inc/Widgets/Font.cpp inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Font.o inc/Widgets/Font.cpp
-
-GraphScene.o: inc/Widgets/GraphScene.cpp inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Scene.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o GraphScene.o inc/Widgets/GraphScene.cpp
-
-Lines.o: inc/Widgets/Lines.cpp inc/Widgets/Lines.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Lines.o inc/Widgets/Lines.cpp
-
 QtFunctions.o: inc/Widgets/QtFunctions.cpp inc/Widgets/QtFunctions.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o QtFunctions.o inc/Widgets/QtFunctions.cpp
-
-Scene.o: inc/Widgets/Scene.cpp inc/Widgets/Scene.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Scene.o inc/Widgets/Scene.cpp
-
-String.o: inc/Widgets/String.cpp inc/Widgets/String.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o String.o inc/Widgets/String.cpp
-
-TableWidget.o: inc/Widgets/TableWidget.cpp inc/Widgets/TableWidget.hpp \
-		inc/Widgets/Qt.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp \
-		inc/Widgets/Window.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/String.hpp \
-		inc/Widgets/Lines.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TableWidget.o inc/Widgets/TableWidget.cpp
-
-Widget.o: inc/Widgets/Widget.cpp inc/Widgets/Widget.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Widget.o inc/Widgets/Widget.cpp
-
-Window.o: inc/Widgets/Window.cpp inc/Widgets/Window.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Window.o inc/Widgets/Window.cpp
-
-Window_Draw.o: inc/Widgets/Window_Draw.cpp inc/Widgets/Window.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Window_Draw.o inc/Widgets/Window_Draw.cpp
-
-Window_Event.o: inc/Widgets/Window_Event.cpp inc/Widgets/Window.hpp \
-		inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Window_Event.o inc/Widgets/Window_Event.cpp
-
-WindowButton.o: inc/Widgets/WindowButton.cpp inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WindowButton.o inc/Widgets/WindowButton.cpp
-
-WindowTitleBar.o: inc/Widgets/WindowTitleBar.cpp inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WindowTitleBar.o inc/Widgets/WindowTitleBar.cpp
-
-WindowTitleBar_Buttons.o: inc/Widgets/WindowTitleBar_Buttons.cpp inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WindowTitleBar_Buttons.o inc/Widgets/WindowTitleBar_Buttons.cpp
-
-WindowTitleBar_Draw.o: inc/Widgets/WindowTitleBar_Draw.cpp inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WindowTitleBar_Draw.o inc/Widgets/WindowTitleBar_Draw.cpp
-
-WindowTitleBar_Event.o: inc/Widgets/WindowTitleBar_Event.cpp inc/Widgets/WindowTitleBar.hpp \
-		inc/Widgets/WindowButton.hpp \
-		inc/Widgets/QtDefines.hpp \
-		inc/Widgets/Widget.hpp \
-		inc/Widgets/DrawScene.hpp \
-		inc/Widgets/Scene.hpp \
-		inc/Widgets/GraphScene.hpp \
-		inc/Widgets/Spacers.hpp \
-		inc/Widgets/QtFunctions.hpp \
-		inc/Widgets/Font.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WindowTitleBar_Event.o inc/Widgets/WindowTitleBar_Event.cpp
 
 moc_AddMemberModal.o: moc_AddMemberModal.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_AddMemberModal.o moc_AddMemberModal.cpp
 
 moc_MainWindow.o: moc_MainWindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_MainWindow.o moc_MainWindow.cpp
-
-moc_DrawScene.o: moc_DrawScene.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_DrawScene.o moc_DrawScene.cpp
-
-moc_GraphScene.o: moc_GraphScene.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_GraphScene.o moc_GraphScene.cpp
-
-moc_Lines.o: moc_Lines.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Lines.o moc_Lines.cpp
-
-moc_Scene.o: moc_Scene.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Scene.o moc_Scene.cpp
-
-moc_TableWidget.o: moc_TableWidget.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_TableWidget.o moc_TableWidget.cpp
-
-moc_Widget.o: moc_Widget.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Widget.o moc_Widget.cpp
-
-moc_Window.o: moc_Window.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_Window.o moc_Window.cpp
-
-moc_WindowButton.o: moc_WindowButton.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_WindowButton.o moc_WindowButton.cpp
-
-moc_WindowTitleBar.o: moc_WindowTitleBar.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_WindowTitleBar.o moc_WindowTitleBar.cpp
 
 ####### Install
 

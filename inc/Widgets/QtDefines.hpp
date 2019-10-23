@@ -10,14 +10,7 @@
 
 #include <QtWidgets>
 
-#include "Widget.hpp"
-
-#include "DrawScene.hpp"
-#include "GraphScene.hpp"
-#include "Scene.hpp"
-
 #include "Spacers.hpp"
 #include "QtFunctions.hpp"
-#include "Font.hpp"
 
 #endif //HEADER_QT_DEFINES

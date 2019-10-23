@@ -7,4 +7,4 @@ Friday
 Saturday
 35
 1
-1 0 efdsfs g 8 Friday Monday Saturday Sunday Thursday Tuesday Wednesday 
+1 0 sdfds dsgfds 1 
