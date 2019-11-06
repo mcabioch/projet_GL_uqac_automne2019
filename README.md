@@ -6,7 +6,7 @@ PlanMaker is a C++14/Qt5 software that generates plannings for your team accordi
 
 
 ## Installation
-❗ Only works on Linux for now.
+❗ Only works on Linux with Qt5 for now.
 ```bash
 git clone https://github.com/mcabioch/projet_GL_uqac_automne2019.git
 make
