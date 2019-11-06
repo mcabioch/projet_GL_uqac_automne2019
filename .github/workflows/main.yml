@@ -14,7 +14,9 @@ jobs:
         steps:
             - uses: actions/checkout@v1
             - name: Install tools
-              run: echo Installation
+              run: |
+                echo Installation
+                wget http://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-linux-x64-5.11.0.run
             - name: Build program
               run: |
                 make qt
