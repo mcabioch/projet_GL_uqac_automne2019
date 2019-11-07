@@ -16,7 +16,7 @@ jobs:
             - name: Install tools
               run: |
                 echo Installation
-                wget http://download.qt.io/official_releases/qt/5.11/5.11.0/qt-opensource-linux-x64-5.11.0.run
+                apt-get install qt5-default
             - name: Build program
               run: |
                 make qt
