@@ -16,7 +16,7 @@ jobs:
             - name: Install tools
               run: |
                 echo Installation
-                apt-get install qt5-default
+                sudo apt-get install qt5-default
             - name: Build program
               run: |
                 make qt
