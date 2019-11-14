@@ -3,7 +3,7 @@
 echo Installation
 sudo apt-get install qt5-default
 
-mkdir -p /usr/lib/qt5/bin/
-cp `whereis qmake` /usr/lib/qt5/bin/qmake
+sudo mkdir -p /usr/lib/qt5/bin/
+sudo cp `whereis qmake` /usr/lib/qt5/bin/qmake
 
 exit 0
