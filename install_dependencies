@@ -3,4 +3,6 @@
 echo Installation
 sudo apt-get install qt5-default
 
+whereis qmake
+
 exit 0
