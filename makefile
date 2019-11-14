@@ -283,45 +283,6 @@ createDirs:
 #
 	make doxyfile
 
-create: createDirs
-	cp "$(TEMPDIR)/CPP$(MAINFILE)" "$(SRCDIR)/$(MAINFILE)"
-	cp "$(TEMPDIR)/CPP$(FUNCTFILEC)" "$(SRCDIR)/$(FUNCTFILEC)"
-	cp "$(TEMPDIR)/CPP$(FUNCTFILEH)" "$(INCDIR)/$(FUNCTFILEH)"
-	cp "$(TEMPDIR)/CPP$(CONFIG)" "$(CONFIG)"
-#
-	make libcpp
-
-createBoost: create
-	cp "$(TEMPDIR)/CPP$(MAINFILE)" "$(SRCDIR)/$(MAINFILE)"
-	cp "$(TEMPDIR)/CPP$(FUNCTFILEC)" "$(SRCDIR)/$(FUNCTFILEC)"
-	cp "$(TEMPDIR)/CPP$(FUNCTFILEH)" "$(INCDIR)/$(FUNCTFILEH)"
-	cp "$(TEMPDIR)/CPP$(CONFIG)" "$(CONFIG)"
-#
-	make libboost
-
-createC: createDirs
-	cp "$(TEMPDIR)/C$(CMAINFILE)" "$(SRCDIR)/$(CMAINFILE)"
-	cp "$(TEMPDIR)/C$(CFUNCTFILEC)" "$(SRCDIR)/$(CFUNCTFILEC)"
-	cp "$(TEMPDIR)/C$(CFUNCTFILEH)" "$(INCDIR)/$(CFUNCTFILEH)"
-#
-	make libc
-
-createSFML: createDirs
-	cp "$(TEMPDIR)/SFML$(MAINFILE)" "$(SRCDIR)/$(MAINFILE)"
-	cp "$(TEMPDIR)/SFML$(FUNCTFILEC)" "$(SRCDIR)/$(FUNCTFILEC)"
-	cp "$(TEMPDIR)/SFML$(FUNCTFILEH)" "$(INCDIR)/$(FUNCTFILEH)"
-#
-	make libsfml
-	make addWindowSfml NAME_NEW_FILE="MainWindow"
-
-createSFMLOPENGL: createDirs
-	cp "$(TEMPDIR)/OPENGL$(MAINFILE)" "$(SRCDIR)/$(MAINFILE)"
-	cp "$(TEMPDIR)/OPENGL$(FUNCTFILEC)" "$(SRCDIR)/$(FUNCTFILEC)"
-	cp "$(TEMPDIR)/OPENGL$(FUNCTFILEH)" "$(INCDIR)/$(FUNCTFILEH)"
-#
-	make libsfml
-	make addWindowOpenGL NAME_NEW_FILE="MainWindow"
-
 PHONY += cleanConfigure clean mrproper remove
 
 cleanConfigure:
@@ -354,60 +315,12 @@ remove: clean
 	$(RM) $(RMFLAGS) $(DOXYLN)
 	$(RM) $(RMFLAGS) $(HTMLLN)
 
-PHONY += run install remake lib libs
-
-run:
-	@./$(FIN_EXE)
+PHONY += install remake lib libs
 
 install: clean
 	make all
 
 remake: mrproper install
-
-lib: $(OBJ)
-ifeq ($(DEBUG),yes)
-	make lib DEBUG=no
-else
-	$(AR) $(ARFLAGS) $(LIBDIR)/$(EXE).a $(OBJ)
-	make doc
-endif
-
-libs:
-	make clean
-	make lib -j4
-#
-	make clean
-	make lib TARGET=win -j4
-#
-#	make clean
-#	make lib TARGET=rpi1 -j4
-#
-	make clean
-	make lib TARGET=rpi2 -j4
-#
-	make clean
-	make lib TARGET=rpi3 -j4
-#
-	make clean
-	make lib TARGET=beaglebb -j4
-
-PHONY += gdb valgrind check
-
-gdb: clean
-	make all OTHERFLAGS=-g
-	gdb $(BINDIR)/$(FIN_EXE)
-
-valgrind: all
-	valgrind ./$(FIN_EXE)
-
-check:
-	make gdb
-	make valgrind
-#
-	read a
-#
-	make remake
-	make run
 
 PHONY += qtRun qtClean qt qtInstall qtRemove createQt libqt qtRemake
 
@@ -445,7 +358,11 @@ qtRemake: mrproper
 qtClean: clean
 	make -f Makefile clean
 
-qtInstall: qtClean qt qtClean
+qtInstall: qtClean
+	@echo Installation
+	sudo apt-get install qt5-default
+	make qt
+	make qtClean
 
 qtRemove: remove
 	rm -rf Widgets
