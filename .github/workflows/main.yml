@@ -15,7 +15,7 @@ jobs:
             - uses: actions/checkout@v1
             - name: Install tools
               run: |
-                make qtInstall
+                make install_dependencies
             - name: Build program
               run: |
-                make qt
+                make qtInstall
