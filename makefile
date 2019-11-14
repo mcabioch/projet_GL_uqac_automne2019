@@ -322,7 +322,7 @@ install: clean
 
 remake: mrproper install
 
-PHONY += qtRun qtClean qt qtInstall qtRemove createQt libqt qtRemake
+PHONY += qtRun qtClean qt qtInstall qtRemove createQt libqt qtRemake install_dependencies
 
 createQt: createDirs
 	cp "$(TEMPDIR)/QT$(MAINFILE)" "$(SRCDIR)/$(MAINFILE)"
@@ -358,12 +358,11 @@ qtRemake: mrproper
 qtClean: clean
 	make -f Makefile clean
 
-qtInstall:
+install_dependencies:
 	@echo Installation
 	sudo apt-get install qt5-default
-	make qtClean
-	make qt
-	make qtClean
+
+qtInstall: install_dependencies qtClean qt qtClean
 
 qtRemove: remove
 	rm -rf Widgets
