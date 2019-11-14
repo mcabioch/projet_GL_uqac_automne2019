@@ -358,7 +358,7 @@ qtRemake: mrproper
 qtClean: clean
 	make -f Makefile clean
 
-qtInstall: install_dependencies qtClean qt qtClean
+qtInstall: qt qtClean
 
 qtRemove: remove
 	rm -rf Widgets
