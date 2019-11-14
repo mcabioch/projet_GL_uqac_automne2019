@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo Installation
+sudo apt-get install qt5-default

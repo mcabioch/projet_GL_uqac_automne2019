@@ -358,10 +358,6 @@ qtRemake: mrproper
 qtClean: clean
 	make -f Makefile clean
 
-install_dependencies:
-	@echo Installation
-	sudo apt-get install qt5-default
-
 qtInstall: install_dependencies qtClean qt qtClean
 
 qtRemove: remove
