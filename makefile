@@ -240,6 +240,8 @@ LIBSFMLOUT = $(addprefix $(LIBDIR)/, $(notdir $(LIBSFMLIN)))
 
 ARCHNAME = $(FIN_EXE)
 
+QTMAKEFILE = Makefile QMAKE=qmake
+
 #
 #	Rules
 #
@@ -251,7 +253,7 @@ all:
 	qmake
 	echo "\nCXXFLAGS +=  -std=c++14 -Iinc" >> Makefile
 #
-	$(MAKE) -f Makefile all SUBLIBS="$(QTLIBS)"
+	$(MAKE) -f $(QTMAKEFILE) all SUBLIBS="$(QTLIBS)"
 
 $(BINDIR)/$(FIN_EXE): $(OBJ)
 	$(CXX) $(OBJ) $(LDFLAGS) -o $(BINDIR)/$(FIN_EXE)
@@ -344,7 +346,7 @@ qt:
 	qmake
 	echo "\nCXXFLAGS +=  -std=c++14 -Iinc" >> Makefile
 #
-	$(MAKE) -f Makefile all SUBLIBS="$(QTLIBS)"
+	$(MAKE) -f $(QTMAKEFILE) all SUBLIBS="$(QTLIBS)"
 
 qtRemake: mrproper
 	rm -rf *.pro
@@ -356,7 +358,7 @@ qtRemake: mrproper
 	make qt
 
 qtClean: clean
-	make -f Makefile clean
+	make -f $(QTMAKEFILE) clean
 
 qtInstall: qt qtClean
 

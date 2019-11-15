@@ -3,8 +3,8 @@
 echo Installation
 sudo apt-get install qt5-default
 
-ls -la /usr/lib/qt5/bin/ | grep "make"
-sudo mkdir -p /usr/lib/qt5/bin/
-sudo cp `whereis qmake | cut -d' ' -f2` /usr/lib/qt5/bin/
+#ls -la /usr/lib/qt5/bin/ | grep "make"
+#sudo mkdir -p /usr/lib/qt5/bin/
+#sudo cp `whereis qmake | cut -d' ' -f2` /usr/lib/qt5/bin/
 
 exit 0
